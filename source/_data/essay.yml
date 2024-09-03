@@ -1,0 +1,17 @@
+- class_name: 即刻短文
+  essay_list:
+    - content: 初步部署好了，除了时间格式。故22年表示当年，00年表示之前的短文。
+      date: 2022/9/2 20:00:00
+      link: https://sch-nie.com/
+    - content: 不知道说什么好
+      date: 2022/9/2 20:00:00
+      from: xuedingeningmeng
+    - content: woc网站玩崩了，修了好久，只得与bug共存
+      date: 2022/9/3 21:00:00
+      image:
+        - https://picbed.sch-nie.com/img/ground2 (1).jpg
+    - content: 歌曲推荐
+      date: 2022/09/25
+      aplayer:
+        server: tencent
+        id: 001FGQba3i10mw
