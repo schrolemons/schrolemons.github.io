@@ -202,7 +202,7 @@ function todis() {
                     </p>
                     <p style = "text-align: center; font-weight:bold;">🎉 欢迎信息 🎉</p>
                     <br>
-                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 这里是我们创造的世界，欢迎您的加入。
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 欢迎您的加入我们创造的世界。
                     
                     <br>
                      <br>
