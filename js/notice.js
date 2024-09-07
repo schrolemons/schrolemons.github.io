@@ -196,15 +196,17 @@ function todis() {
                     `
                     <p style = "text-align: center; font-weight:bold;">---主域名---</p>
                     <p style = "text-align: center; ">
-                        <a target="_blank" rel="noopener" style = "text-align: center;" href="https://www.sch-nie.cn/" title="此线路部署于vercel">
-                            <font color="#5ea6e5">sch-nie.cn</font>
+                        <a target="_blank" rel="noopener" style = "text-align: center;" href="https://www.sch-nie.com/" title="此线路部署于vercel">
+                            <font color="#5ea6e5">sch-nie.com</font>
                  
                     </p>
                     <p style = "text-align: center; font-weight:bold;">🎉 欢迎信息 🎉</p>
-                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 欢迎来自 <span style="color:#5ea6e5;font-weight:bold;">${pos}</span> 的小伙伴，${timeChange}<br>
-                    你距离SCHNIE第九边缘约有 <span style="color:#5ea6e5;font-weight:bold;">${dist}</span> 公里，${posdesc}
                     <br>
                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 这里是我们创造的世界，欢迎您的加入。
+                    
+                    <br>
+                     <br>
+                    &nbsp&nbsp 联系邮箱：schnie@foxmail.com
                     
                     <br>
                     `;
