@@ -1,9 +1,9 @@
 #gitcalendar {
     margin: 0 auto;
     border-radius: 24px;
-    background: var(--anzhiyu-card-bg);
-    border: var(--style-border-always);
-    box-shadow: var(--anzhiyu-shadow-border);
+    background: var(#f8cb14);
+    border: var(#f8cb14);
+    box-shadow: var(#f8cb14);
     position: relative;
     padding: 1rem 2rem;
     overflow: hidden;
@@ -25,11 +25,11 @@
     overflow: visible;
     height: auto !important;
     min-height: 16px;
-    color: #666;
+    color: #f8cb14;
 }
 
 #web_bg ~ .page:has(#about-page) {
-    background: var(--anzhiyu-background);
+    background: var(#f8cb14);
 }
 
 #about-page .author-box {
@@ -55,7 +55,7 @@
     background: #6bdf8f;
     position: absolute;
     border-radius: 50%;
-    border: 6px solid var(--anzhiyu-background);
+    border: 6px solid var(#f8cb14);
     top: 50%;
     left: 50%;
     transform: translate(35px, 45px);
@@ -73,7 +73,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    color: var(--anzhiyu-white);
+    color: var(#f8cb14);
     background: linear-gradient(120deg, #f8f4f5 0, #00d4ff 100%);
     background-size: 200%;
     animation: gradient 15s ease infinite;
