@@ -428,18 +428,13 @@ li.todolist-li{
 }
 @keyframes huxi_dark {
     0% {
-        box-shadow: 0px 0px 1px 1px #39c5bb;
+        box-shadow: 0px 0px 1px 1px #f8cb14;
     }
     50% {
-        box-shadow: 0px 0px 5px 5px #39c5bb;
+        box-shadow: 0px 0px 5px 5px #f8cb14;
     }
     100% {
-        box-shadow: 0px 0px 1px 1px #39c5bb;
+        box-shadow: 0px 0px 1px 1px #f8cb14;
     }
 }
 
-
-.loading-img {
-    background: url(https://picbed.sch-nie.com/img/SCHNIE.png) no-repeat center center;
-    background-size: cover;
-}
