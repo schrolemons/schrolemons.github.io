@@ -1,3 +1,15 @@
+if (document.querySelector('#bber-talk')) {
+    var swiper = new Swiper('.swiper-container', {
+        direction: 'vertical', // 垂直切换选项
+        loop: true,
+        autoplay: {
+            delay: 3000,
+            pauseOnMouseEnter: true
+        },
+    });
+}
+
+
 var percentFlag = false; // 节流阀
 function essayScroll() {
     let a = document.documentElement.scrollTop || window.pageYOffset; // 卷去高度
