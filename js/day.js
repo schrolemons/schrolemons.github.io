@@ -153,10 +153,12 @@ else if ((lunar["IMonthCn"] == "九月" && lunar["IDayCn"] == "初九")) {
     }
 }
 else{
+
     if (sessionStorage.getItem("isPopupWindow") != "1") {
         Swal.fire("欢迎访问。\n联系 QQ：2432902665");
         sessionStorage.setItem("isPopupWindow", "1");
     }
+
 }
 
 // 切换主题提醒
