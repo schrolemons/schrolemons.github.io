@@ -1,0 +1,538 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>计算机安全：安全协议 | SCHNIEBOW</title><meta name="author" content="schrolemons"><meta name="copyright" content="schrolemons"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="安全协议：身份证明协议 挑战-响应协议：证明者向验证者通过展示与身份相关的秘密知识，证明自己的身份。  双向认证(基于共享密钥) 挑战：一方传送给对方一个随机数   响应：对方对这个数进行特定处理再返回  双向认证协议(1)    假设A也是可接受多个会话的通用计算机考虑当攻击者伪装B的身份   受到反射攻击：    关键：伪装B，建立一个同A的会话；拦截一个A向B的会话；利用A的自动加密，分别套">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机安全：安全协议">
+<meta property="og:url" content="https://www.sch-nie.com/posts/24329b97.html">
+<meta property="og:site_name" content="SCHNIEBOW">
+<meta property="og:description" content="安全协议：身份证明协议 挑战-响应协议：证明者向验证者通过展示与身份相关的秘密知识，证明自己的身份。  双向认证(基于共享密钥) 挑战：一方传送给对方一个随机数   响应：对方对这个数进行特定处理再返回  双向认证协议(1)    假设A也是可接受多个会话的通用计算机考虑当攻击者伪装B的身份   受到反射攻击：    关键：伪装B，建立一个同A的会话；拦截一个A向B的会话；利用A的自动加密，分别套">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.sch-nie.com/study/jsjaq.png">
+<meta property="article:published_time" content="2024-09-17T14:50:40.000Z">
+<meta property="article:modified_time" content="2024-09-18T02:50:40.000Z">
+<meta property="article:author" content="schrolemons">
+<meta property="article:tag" content="计算机安全">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.sch-nie.com/study/jsjaq.png"><link rel="shortcut icon" href="/pictures/SCHNIE.png"><link rel="canonical" href="https://www.sch-nie.com/posts/24329b97.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="baidu-site-verification"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":230},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '计算机安全：安全协议',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-09-18 10:50:40'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/essay_page/essay_page.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/js-heo@1.0.11/bb/showbb_in_index.css"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper-anzhiyu@1.0.4/lib/swiper.min.css"><link rel="stylesheet" href="/css/essay_page/home_essay_bar.css"><link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/readPercent.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/js-heo@1.0.11/mainColor/heoMainColor.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/js-heo@1.0.11/404/404.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zhheo/JS-Heo@main/rightmenu/rightmenu.css"><span id="fps"></span><link rel="stylesheet" href="/css/aboutme.css"><link rel="stylesheet" href="/css/genshinimpact.css"><link rel="stylesheet" href="https://ai.tianli0.top/static/public/tianli_gpt.min.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.css" /><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.zhimg.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.min.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img" style="background-image:url(https://picbed.sch-nie.com/img/SCHNIE.png);background-repeat: no-repeat;background-position:center;"></div><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = 'hidden';
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+
+preloader.initLoading()
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/pictures/SCHNIE.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">28</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw hide"></i><span> 推荐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/webshow/"><span> 推荐网址</span></a></li><li><a class="site-page child" href="/game/"><span> 推荐游戏</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw hide"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><span> 关于我</span></a></li><li><a class="site-page child" href="/invite/"><span> 邀请函</span></a></li><li><a class="site-page child" href="/aboutme/"><span> 个人信息</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw hide"></i><span> 测试</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/test/"><span> 标准化测试</span></a></li><li><a class="site-page child" href="/IQtest/isit/"><span> 智能力测试</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw hide"></i><span> 世界原力</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/world/"><span> 世界观</span></a></li><li><a class="site-page child" href="/value/"><span> 人生观</span></a></li><li><a class="site-page child" href="/nature/"><span> 自然观</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw hide"></i><span> 分享</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/essay/"><span> 随笔</span></a></li><li><a class="site-page child" href="/todolist/"><span> 计划</span></a></li><li><a class="site-page child" href="/bilishow/"><span> bilibili</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw hide"></i><span> 分类</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><span> 类别</span></a></li><li><a class="site-page child" href="/tags/"><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="javascript:randomPost()" rel="external nofollow noreferrer"><i class="fa-fw fa-solid fa-shuffle"></i><span> 随机跳转</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/study/jsjaq.png')"><nav id="nav"><span id="blog-info"><a href="/" title="SCHNIEBOW"><span class="site-name">SCHNIEBOW</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw hide"></i><span> 推荐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/webshow/"><span> 推荐网址</span></a></li><li><a class="site-page child" href="/game/"><span> 推荐游戏</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw hide"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><span> 关于我</span></a></li><li><a class="site-page child" href="/invite/"><span> 邀请函</span></a></li><li><a class="site-page child" href="/aboutme/"><span> 个人信息</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw hide"></i><span> 测试</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/test/"><span> 标准化测试</span></a></li><li><a class="site-page child" href="/IQtest/isit/"><span> 智能力测试</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw hide"></i><span> 世界原力</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/world/"><span> 世界观</span></a></li><li><a class="site-page child" href="/value/"><span> 人生观</span></a></li><li><a class="site-page child" href="/nature/"><span> 自然观</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw hide"></i><span> 分享</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/essay/"><span> 随笔</span></a></li><li><a class="site-page child" href="/todolist/"><span> 计划</span></a></li><li><a class="site-page child" href="/bilishow/"><span> bilibili</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw hide"></i><span> 分类</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><span> 类别</span></a></li><li><a class="site-page child" href="/tags/"><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="javascript:randomPost()" rel="external nofollow noreferrer"><i class="fa-fw fa-solid fa-shuffle"></i><span> 随机跳转</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">计算机安全：安全协议</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-09-17T14:50:40.000Z" title="发表于 2024-09-17 22:50:40">2024-09-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-09-18T02:50:40.000Z" title="更新于 2024-09-18 10:50:40">2024-09-18</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2027</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="计算机安全：安全协议"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="安全协议：身份证明协议"><a href="#安全协议：身份证明协议" class="headerlink" title="安全协议：身份证明协议"></a>安全协议：身份证明协议</h2><blockquote>
+<p>挑战-响应协议：证明者向验证者通过展示与身份相关的秘密知识，证明自己的身份。</p>
+</blockquote>
+<h4 id="双向认证-基于共享密钥"><a href="#双向认证-基于共享密钥" class="headerlink" title="双向认证(基于共享密钥)"></a>双向认证(基于共享密钥)</h4><blockquote>
+<p>挑战：一方传送给对方一个随机数</p>
+</blockquote>
+<blockquote>
+<p>响应：对方对这个数进行特定处理再返回</p>
+</blockquote>
+<p><font color=red>双向认证协议(1)</font></p>
+<blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/study/xieyi0.png" alt="协议1"></p>
+<blockquote>
+<p>假设A也是可接受多个会话的通用计算机<br>考虑当攻击者伪装B的身份</p>
+</blockquote>
+</blockquote>
+<p>受到反射攻击：</p>
+<blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/study/gonji0.png" alt="反射攻击"></p>
+<blockquote>
+<p>关键：伪装B，建立一个同A的会话；拦截一个A向B的会话；利用A的自动加密，分别套出两个随机数的加密值。</p>
+</blockquote>
+</blockquote>
+<p><font color=red>双向认证协议(2)</font></p>
+<blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/study/xieyi1.png" alt="协议2"></p>
+</blockquote>
+<p>受到反射攻击：</p>
+<blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/study/fanshe.png" alt="反射攻击"></p>
+<blockquote>
+<p>改进方式：在每个加密消息里加入发送者、接收者在协议中的角色(这样攻击者就无法利用消息2)。</p>
+</blockquote>
+</blockquote>
+<p><font color=red>双向认证协议(3)</font><br>基于HMAC，对HMAC的 攻击难于对<strong>对称密钥算法</strong>的攻击。</p>
+<blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/study/hmac.png" alt="协议3"></p>
+</blockquote>
+<p><font color=red>双向认证协议(4)</font></p>
+<blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/study/RPC.png" alt="协议4"></p>
+</blockquote>
+<p>攻击：</p>
+<blockquote>
+<p>重放攻击：重放4给A；4中没有注明这个会话密钥和此次通信的关联。<br>类型缺陷攻击：攻击者在第四步重放2给A：虽然攻击者不一定知道RA+1，但猜测nonce比猜测密钥简单。解决方式：Nonce只被要求每次不同即可，不包含随机性。</p>
+</blockquote>
+<h4 id="Schnorr协议-基于整数模p的阶为q的乘法循环群"><a href="#Schnorr协议-基于整数模p的阶为q的乘法循环群" class="headerlink" title="Schnorr协议-基于整数模p的阶为q的乘法循环群"></a>Schnorr协议-基于整数模p的阶为q的乘法循环群</h4><blockquote>
+<p>全局变量：p(大素数)、q(素数，p-1的因数)、g(生成元，0&lt;g&lt;p)、v(公钥，v&#x3D;g^(-a) mod p)</p>
+</blockquote>
+<blockquote>
+<p>私钥：a(0&lt;a&lt;q)</p>
+</blockquote>
+<p>过程：</p>
+<blockquote>
+<p>A 生成随机 r(0&lt;r&lt;q)，将 g^{r} mod p 发给B(防止暴露a)</p>
+</blockquote>
+<blockquote>
+<p>B 向 A 发送随机数 e(防止A伪造a,e&lt;2^{t}&lt;q)[挑战]</p>
+</blockquote>
+<blockquote>
+<p>A 计算 y &#x3D; r + ae mod <strong>q</strong>，将 y发给B，(B无法求离散对数得到r，进而得到e)(为什么mod q：q是阶)[响应]</p>
+</blockquote>
+<blockquote>
+<p>B 计算 g^{y} (g^{-a})^{e} mod p 是否等于g^{r} mod p, 判定A的身份(如果A没有a，很难伪造私钥以通过验证)</p>
+</blockquote>
+<p>问题</p>
+<blockquote>
+<p>将Schnorr协议的过程1，2反序。协议是否安全：不安全，A可第三步构造t，第一步发送g^{t}g^{-a}^e来欺骗B</p>
+</blockquote>
+<blockquote>
+<p>若A使用相同的r进行两次验证，监听者能否获得a：能，B将e设为r，即可获得a</p>
+</blockquote>
+<h4 id="基于公钥的认证"><a href="#基于公钥的认证" class="headerlink" title="基于公钥的认证"></a>基于公钥的认证</h4><blockquote>
+<p>基于加密的认证：用X的公钥加密消息M</p>
+</blockquote>
+<blockquote>
+<p>基于签名的认证：用X的私钥加密消息M</p>
+</blockquote>
+<p>注意：不要将密钥用于多个目的，比如使用不同的密钥对进行签名和加密</p>
+<h4 id="认证协议设计一般原则"><a href="#认证协议设计一般原则" class="headerlink" title="认证协议设计一般原则"></a>认证协议设计一般原则</h4><blockquote>
+<p>安全协议设计是困难的,需要不断设计，分析，改进。</p>
+</blockquote>
+<blockquote>
+<p>协议中报文不能被重复使用。</p>
+</blockquote>
+<blockquote>
+<p>通信的发起者先提供自己的身份的证明，然后才是响应者。</p>
+</blockquote>
+<blockquote>
+<p>发起者和响应者使用不同的共享密钥。</p>
+</blockquote>
+<blockquote>
+<p>发起者和响应者的挑战数来源于不同的集合。如发起者用偶数，响应者用奇数。</p>
+</blockquote>
+<blockquote>
+<p>并行会话无法被利用。</p>
+</blockquote>
+<h2 id="密钥建立协议"><a href="#密钥建立协议" class="headerlink" title="密钥建立协议"></a>密钥建立协议</h2><h3 id="密钥建立-密钥传输"><a href="#密钥建立-密钥传输" class="headerlink" title="密钥建立:密钥传输"></a>密钥建立:密钥传输</h3><p>一方建立，安全地传给另一方。</p>
+<h4 id="1-无预先共享密钥的密钥传输"><a href="#1-无预先共享密钥的密钥传输" class="headerlink" title="1.无预先共享密钥的密钥传输"></a>1.无预先共享密钥的密钥传输</h4><p>密钥 K 保密地（但无身份验证）从 A 传输到 B。</p>
+<blockquote>
+<p>系统参数: 素数 p；A和B分别选择秘密随机数 a、b(1 ≤ a、b ≤ p − 2),均与p − 1互素(保证a逆 mod p-1存在)。</p>
+</blockquote>
+<p>过程：</p>
+<blockquote>
+<p>A → B ： K^{a} mod p</p>
+</blockquote>
+<blockquote>
+<p>A ← B ： (K^{a})^{b} mod p</p>
+</blockquote>
+<blockquote>
+<p>A → B ： (K^{ab})^{a^(-1)} mod p</p>
+</blockquote>
+<h4 id="2-使用密钥分发中心的密钥传输"><a href="#2-使用密钥分发中心的密钥传输" class="headerlink" title="2.使用密钥分发中心的密钥传输"></a>2.使用密钥分发中心的密钥传输</h4><p>每个用户与KDC共享一个秘密密钥，KDC存储并管理所有密钥</p>
+<p>方式一：</p>
+<blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/study/kuanwa.png" alt="宽蛙嘴"><br>攻击：重放2；<br>解决：加入时间戳或nonce</p>
+</blockquote>
+<p>方式二：</p>
+<blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/study/jiandan.png" alt="简单票"></p>
+</blockquote>
+<p>攻击：</p>
+<blockquote>
+<p>重放攻击：如果一个旧密钥 Ks及其KB(KS)泄露，则攻击者可假冒任何人的身份与Bob对话</p>
+</blockquote>
+<blockquote>
+<p>中间人攻击1：Alice可在最后一步假冒任何人的身份与Bob对话</p>
+</blockquote>
+<blockquote>
+<p>中间人攻击2：攻击方C申请和A、B对话，拿到KC(KS)，KA(KS),KC(KS‘),KB(KS’)，进而监听和篡改A、B之间的通信</p>
+</blockquote>
+<p>解决：</p>
+<blockquote>
+<p>解决重放攻击：<br>消息重放的实质是消息的新鲜性（Freshness）不能得到保证。</p>
+<blockquote>
+<p>方式一：时间戳<br>对消息盖上本地时戳，只有当消息上的时戳与当前本地时间的差值在意定范围之内，才接受该消息。要求有一个全局同步时钟，但是如果双方时钟偏差过大或者允许的范围过大，则可以被攻击者利用。<br>方式二：挑战－应答机制<br>通过发送挑战值（Nonce）来确保消息的新鲜性。<br>方式三：序列号<br>通信双方通过消息中的序列号来判断消息的新鲜性。要求通信双方必须事先协商一个初始序列号，并协商递增方法。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>解决中间人攻击：<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/study/jiejue.png" alt="简单票2"></p>
+<blockquote>
+<p>Alice无法假冒别的身份与Bob对话<br>Eva可以得到 KA(Ks，B)和 KB(Ks，A)， 但无法解密Ks，也无法伪造身份(因为身份信息受到KDC的加密)</p>
+</blockquote>
+</blockquote>
+<h4 id="协议一：Needham-Schroeder-协议"><a href="#协议一：Needham-Schroeder-协议" class="headerlink" title="协议一：Needham-Schroeder 协议"></a>协议一：Needham-Schroeder 协议</h4><blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/study/Need.png" alt="协议"><br>4,5是B向A证明身份，确认收到密钥，同时确认A的身份。注意：消息2对KB(A,KS)的加密是没有必要的。</p>
+<blockquote>
+<p>攻击：Trudy得到了一个旧的 ks，则可以重放消息3。而B必须记住所有旧ks才能抵抗这种攻击。<br>解决：在2、3中加入时间戳，或者在3之前加入认证。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>改进：Otway-Rees 协议<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/study/Ot.png" alt="协议"><br>不需要复杂的同步机制<br>通信双方都与KDC进行了一次挑战-应答<br>RA加入到4，保证了KS的新鲜性<br>接收方B不在线时，不能使用</p>
+</blockquote>
+<blockquote>
+<p>改进：Yahalom协议<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/study/xieyi3.png" alt="协议"></p>
+</blockquote>
+<h4 id="协议二：Kerberos协议"><a href="#协议二：Kerberos协议" class="headerlink" title="协议二：Kerberos协议"></a>协议二：Kerberos协议</h4><blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/study/K5.png" alt="协议"><br>TGS票重用，一次登录可访问多个服务<br><del>这部分没看，ppt都是包浆的</del></p>
+</blockquote>
+<h3 id="密钥建立-密钥协商"><a href="#密钥建立-密钥协商" class="headerlink" title="密钥建立:密钥协商"></a>密钥建立:密钥协商</h3><p>共同参与计算一个共享密钥，任何一方不能预先确定结果</p>
+<p>DH密钥协商</p>
+<blockquote>
+<p>A 选择随机数 a，发送给B：g^{a} mod p<br>B 选择随机数  b，发送给A：g^{b} mod p<br>会话密钥 Ks &#x3D; g^{ab} mod p</p>
+</blockquote>
+<p>完美前向保密PFS</p>
+<blockquote>
+<p>长期共享密钥K,当K被截获，不会造成Ks被破译:<br>A公开：EK(g^{a} mod p)<br>B公开：EK(g^{b} mod p)<br>会话密钥:Ks &#x3D; g^{ab} mod p</p>
+</blockquote>
+<p><strong>传输层安全的协议SSL&#x2F;TLS</strong></p>
+<blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/study/woshou.png" alt="协议"></p>
+</blockquote>
+<p>服务：</p>
+<blockquote>
+<p>身份认证。认证用户和服务器，确保数据发送到正确的客户机和服务器；<br>保密性。加密数据以防止数据中途被窃取；<br>完整性。维护数据的完整性，确保数据在传输过程中不被改变。</p>
+</blockquote>
+<p>重要概念：</p>
+<blockquote>
+<p>会话：会话是指客户机和服务器之间的关联。一个会话包含多个连接。SSL 会话使用了公钥算法，开销大。<br>连接：连接是客户和服务器之间的逻辑链路，用于提供合适的传输服务和操作环境。SSL连接使用SSL会话生成的<strong>pre-master secret</strong>生成密钥，不再使用公钥算法。<br>SSL&#x2F;TLS握手协议负责协调客户机和服务器之间的<strong>会话</strong>的状态：当前操作状态和未决状态（在握手协议期间）。</p>
+</blockquote>
+<p>简化的SSL会话建立</p>
+<blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/study/ssl.png" alt="协议"><br>S ：<strong>pre-master secret</strong>，A生成的随机值。<br>K &#x3D; h(S||RA||RB)<br>“msgs”是前边全部消息，用来证明前边消息已经正确接收。<br>CLNT，SRVR 是固定字符串。<br>h(msgs||CLNT||K)可以不加密。</p>
+<blockquote>
+<p>问题：并没有认证A的身份。<br>解决：服务员在此后用其他手段认证A的身份。</p>
+</blockquote>
+</blockquote>
+<p>有共享秘密<strong>pre-master secret</strong>后的SSL连接建立</p>
+<blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/study/lianjie.png" alt="协议"><br>SSL会话已建立，用session-ID表示<br>K &#x3D; h(S||RA||RB)<br>不需要公钥算法</p>
+</blockquote>
+<p>参考资料：<br>1.<a href="http://t.csdnimg.cn/QDNGJ" rel="external nofollow noreferrer" title="" target="">Schnorr身份识别方案</a></p>
+</article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>计算机安全：安全协议</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a href="https://www.sch-nie.com/posts/24329b97.html">https://www.sch-nie.com/posts/24329b97.html</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a"><h>作者</h><div class="post-copyright-cc-info"><h>薛定谔柠檬</h></div></div><div class="post-copyright-c"><h>发布于</h><div class="post-copyright-cc-info"><h>2024-09-17</h></div></div><div class="post-copyright-u"><h>更新于</h><div class="post-copyright-cc-info"><h>2024-09-18</h></div></div><div class="post-copyright-c"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener external nofollow noreferrer" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener external nofollow noreferrer" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AE%89%E5%85%A8/">计算机安全</a></div><div class="post_share"><div class="social-share" data-image="/study/jsjaq.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/posts/7511bdb5.html" title="计算机安全：快速比特操纵算法"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/study/jsjaq.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">计算机安全：快速比特操纵算法</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/11252e67.html" title="计算机安全：蒙哥马利约减"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/study/jsjaq.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-15</div><div class="title">计算机安全：蒙哥马利约减</div></div></a></div><div><a href="/posts/db01f830.html" title="计算机安全：俄国农民指数算法"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/study/jsjaq.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-15</div><div class="title">计算机安全：俄国农民指数算法</div></div></a></div><div><a href="/posts/bc7c7b.html" title="计算机安全：安全计算"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/study/jsjaq.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-15</div><div class="title">计算机安全：安全计算</div></div></a></div><div><a href="/posts/7511bdb5.html" title="计算机安全：快速比特操纵算法"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/study/jsjaq.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-16</div><div class="title">计算机安全：快速比特操纵算法</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/pictures/SCHNIE.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">schrolemons</div><div class="author-info__description">第九边缘博客</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">28</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hzh123456782"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/hzh123456782" rel="external nofollow noreferrer" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:schnie@foxmail.com" rel="external nofollow noreferrer" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://qm.qq.com/q/BviRiChyAE" rel="external nofollow noreferrer" target="_blank" title="qq小群"><i class="fas fa-paw" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://kg2432902665.icoc.me" rel="external nofollow noreferrer" target="_blank" title="前艺术馆"><i class="fas fa-gift" style="color: #4a7dbe;"></i></a><a class="social-icon" href="http://t.csdnimg.cn/7PerG" rel="external nofollow noreferrer" target="_blank" title="CSDN"><i class="fas fa-graduation-cap" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content"><center><b>欢迎访问第九边缘。<br> </a><br>联系邮箱：schnie@foxmail.com<br></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E5%8D%8F%E8%AE%AE%EF%BC%9A%E8%BA%AB%E4%BB%BD%E8%AF%81%E6%98%8E%E5%8D%8F%E8%AE%AE"><span class="toc-text">安全协议：身份证明协议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8C%E5%90%91%E8%AE%A4%E8%AF%81-%E5%9F%BA%E4%BA%8E%E5%85%B1%E4%BA%AB%E5%AF%86%E9%92%A5"><span class="toc-text">双向认证(基于共享密钥)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Schnorr%E5%8D%8F%E8%AE%AE-%E5%9F%BA%E4%BA%8E%E6%95%B4%E6%95%B0%E6%A8%A1p%E7%9A%84%E9%98%B6%E4%B8%BAq%E7%9A%84%E4%B9%98%E6%B3%95%E5%BE%AA%E7%8E%AF%E7%BE%A4"><span class="toc-text">Schnorr协议-基于整数模p的阶为q的乘法循环群</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E5%85%AC%E9%92%A5%E7%9A%84%E8%AE%A4%E8%AF%81"><span class="toc-text">基于公钥的认证</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%A4%E8%AF%81%E5%8D%8F%E8%AE%AE%E8%AE%BE%E8%AE%A1%E4%B8%80%E8%88%AC%E5%8E%9F%E5%88%99"><span class="toc-text">认证协议设计一般原则</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%86%E9%92%A5%E5%BB%BA%E7%AB%8B%E5%8D%8F%E8%AE%AE"><span class="toc-text">密钥建立协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%86%E9%92%A5%E5%BB%BA%E7%AB%8B-%E5%AF%86%E9%92%A5%E4%BC%A0%E8%BE%93"><span class="toc-text">密钥建立:密钥传输</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%97%A0%E9%A2%84%E5%85%88%E5%85%B1%E4%BA%AB%E5%AF%86%E9%92%A5%E7%9A%84%E5%AF%86%E9%92%A5%E4%BC%A0%E8%BE%93"><span class="toc-text">1.无预先共享密钥的密钥传输</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8%E5%AF%86%E9%92%A5%E5%88%86%E5%8F%91%E4%B8%AD%E5%BF%83%E7%9A%84%E5%AF%86%E9%92%A5%E4%BC%A0%E8%BE%93"><span class="toc-text">2.使用密钥分发中心的密钥传输</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%8F%E8%AE%AE%E4%B8%80%EF%BC%9ANeedham-Schroeder-%E5%8D%8F%E8%AE%AE"><span class="toc-text">协议一：Needham-Schroeder 协议</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%8F%E8%AE%AE%E4%BA%8C%EF%BC%9AKerberos%E5%8D%8F%E8%AE%AE"><span class="toc-text">协议二：Kerberos协议</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%86%E9%92%A5%E5%BB%BA%E7%AB%8B-%E5%AF%86%E9%92%A5%E5%8D%8F%E5%95%86"><span class="toc-text">密钥建立:密钥协商</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By schrolemons</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-show"><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div class="js-pjax" id="rightMenu"><div class="rightMenu-group rightMenu-small"><a class="rightMenu-item" href="javascript:window.history.back();" rel="external nofollow noreferrer"><i class="fa fa-arrow-left"></i></a><a class="rightMenu-item" href="javascript:window.history.forward();" rel="external nofollow noreferrer"><i class="fa fa-arrow-right"></i></a><a class="rightMenu-item" href="javascript:window.location.reload();" rel="external nofollow noreferrer"><i class="fa fa-refresh"></i></a><a class="rightMenu-item" href="javascript:rmf.scrollToTop();" rel="external nofollow noreferrer"><i class="fa fa-arrow-up"></i></a></div><div class="rightMenu-group rightMenu-line"><a class="rightMenu-item" href="javascript:randomPost()" rel="external nofollow noreferrer"><i class="fa fa-paper-plane"></i><span>随便逛逛</span></a><div class="rightMenu-item" id="menu-darkmode"><i class="fa-solid fa-moon"></i><span>昼夜切换</span></div><a class="rightMenu-item" href="javascript:rmf.switchReadMode();" rel="external nofollow noreferrer"><i class="fa fa-book"></i><span>阅读模式</span></a><a class="rightMenu-item" href="javascript:rmf.fullScreen();" rel="external nofollow noreferrer"><i class="fas fa-expand"></i><span>切换全屏</span></a><a class="rightMenu-item" href="javascript:rmf.copySelect();" rel="external nofollow noreferrer"><i class="fa fa-copy"></i><span>复制</span></a><a class="rightMenu-item" href="javascript:rmf.copyWordsLink()" rel="external nofollow noreferrer"><i class="fa fa-link"></i><span>复制地址</span></a><a class="rightMenu-item" href="javascript:rmf.openWithNewTab()" rel="external nofollow noreferrer"><i class="fa fa-window-restore"></i><span>新窗打开</span></a></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="/js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.8/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><script src="/js/essay.js"></script><script async data-pjax src="/js/custom.js"></script><script async data-pjax src="/js/waterfall/waterfall.js"></script><script data-pjax src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/js/swiper.min.js"></script><script defer src="/js/cursor.js"></script><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="/js/readPercent.js"></script><script defer type="text/javascript" src="https://cdn1.tianli0.top/npm/sweetalert2@8.19.0/dist/sweetalert2.all.js"></script><script defer src="/js/lunar.js"></script><script defer src="/js/day.js"></script><script async src="/js/title.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script async data-pjax src="https://cdn.jsdelivr.net/gh/zhheo/JS-Heo@main/rightmenu/rightmenu.js"></script><script type="text/javascript" src="https://cdn1.tianli0.top/npm/jquery@latest/dist/jquery.min.js"></script><script type="text/javascript" src="/js/rightmenu.js"></script><script src="/js/notice.js"></script><script async src="/js/fps.js"></script><script src="https://cdn.jsdelivr.net/gh/Jayhrn/CDN/waterfall.min.js"></script><script>let tianliGPT_postSelector = '\#post \#article-container';let tianliGPT_key = '12CwUo4U1Qw';</script><script src="https://ai.tianli0.top/static/public/tianli_gpt.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="30ea" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_clock_anzhiyu_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock_anzhiyu')
+    if(parent_div_git) {
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = '/';
+  var qweather_key = 'd75cc6f893fb4b3f8e3c4aad4ee53e71';
+  var gaud_map_key = '297cfeee1728a40b0aafeee20c52d275';
+  var baidu_ak_key = 'undefined';
+  var flag = 0;
+  var clock_rectangle = '113.34532,23.15624';
+  var clock_default_rectangle_enable = 'false';
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  </script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script data-pjax src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.js"></script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/6b6b7c33.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picbed.sch-nie.com/img/create.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-09-01</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/6b6b7c33.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">欢迎来到第九边缘</a><div class="blog-slider__text">推荐内容</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/6b6b7c33.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/cb16f805.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/pictures/ground2 (3).jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-08-08</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/cb16f805.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">第九边缘：金泽范式</a><div class="blog-slider__text">推荐内容</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/cb16f805.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/ac42f935.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/pictures/ground2 (21).jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-07-05</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/ac42f935.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">第九边缘：风落琴璃</a><div class="blog-slider__text">推荐内容</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/ac42f935.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/5b1f7b53.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/pictures/ground2 (2).jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-02-05</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/5b1f7b53.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">第九边缘：雷云之梦</a><div class="blog-slider__text">推荐内容</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/5b1f7b53.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/70a1a3ee.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/pictures/ground2 (1).jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-02-03</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/70a1a3ee.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">落日与风：重返故都</a><div class="blog-slider__text">推荐内容</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/70a1a3ee.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/7511bdb5.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/study/jsjaq.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-09-16</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/7511bdb5.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">计算机安全：快速比特操纵算法</a><div class="blog-slider__text">推荐内容</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/7511bdb5.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/24329b97.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/study/jsjaq.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-09-17</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/24329b97.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">计算机安全：安全协议</a><div class="blog-slider__text">推荐内容</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/24329b97.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/bc7c7b.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/study/jsjaq.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-09-15</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/bc7c7b.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">计算机安全：安全计算</a><div class="blog-slider__text">推荐内容</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/bc7c7b.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/db01f830.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/study/jsjaq.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-09-15</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/db01f830.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">计算机安全：俄国农民指数算法</a><div class="blog-slider__text">推荐内容</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/db01f830.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/11252e67.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/study/jsjaq.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-09-15</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/11252e67.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">计算机安全：蒙哥马利约减</a><div class="blog-slider__text">推荐内容</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/11252e67.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/a8559b10.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/pictures/ground2 (2).jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-12-22</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/a8559b10.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">万世之雷：落水宏鳞</a><div class="blog-slider__text">推荐内容</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/a8559b10.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/279c6dab.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/pictures/ground2 (16).jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-07-05</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/279c6dab.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">第九边缘：火神契约</a><div class="blog-slider__text">推荐内容</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/279c6dab.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/fafc2e5.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/pictures/ground2 (8).jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-07-05</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/fafc2e5.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">破实之冰：神子之树</a><div class="blog-slider__text">推荐内容</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/fafc2e5.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/b4d080d0.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/pictures/ground2 (9).jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-03-24</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/b4d080d0.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">琢刻之木：辨世神格</a><div class="blog-slider__text">推荐内容</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/b4d080d0.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/814f9851.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/pictures/ground2 (12).jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-08-12</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/814f9851.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">三拾之阴：昏昼合棋</a><div class="blog-slider__text">推荐内容</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/814f9851.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/42b8e642.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/pictures/ground2 (8).jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-08-16</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/42b8e642.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">循理之草：创世档案</a><div class="blog-slider__text">推荐内容</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/42b8e642.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/247dd60b.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/pictures/ground2 (1).jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-07-05</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/247dd60b.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">第九边缘：冰海艺术</a><div class="blog-slider__text">推荐内容</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/247dd60b.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/279c6dab.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/pictures/ground2 (11).jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-02-05</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/279c6dab.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">第九边缘：光隐囚徒</a><div class="blog-slider__text">推荐内容</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/279c6dab.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/91de739.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/pictures/ground2 (14).jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-08-16</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/91de739.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">越度之土：九虹重启</a><div class="blog-slider__text">推荐内容</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/91de739.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/9060a028.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/pictures/ground2 (3).jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-07-05</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/9060a028.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">凝虚之光：光沫浮影</a><div class="blog-slider__text">推荐内容</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/9060a028.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/3d4b2011.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/pictures/ground2 (14).jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-08-16</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/3d4b2011.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">第九边缘：阴行世界</a><div class="blog-slider__text">推荐内容</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/3d4b2011.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/4410ca7a.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/pictures/ground2 (15).jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-07-05</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/4410ca7a.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">第九边缘：水域纷战</a><div class="blog-slider__text">推荐内容</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/4410ca7a.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/fb41cab8.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/pictures/ground2 (19).jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-12-22</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/fb41cab8.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">第九边缘：创世前奏</a><div class="blog-slider__text">推荐内容</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/fb41cab8.html&quot;);" href="javascript:void(0);" rel="external nofollow noreferrer" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="博客框架为Hexo_v6.2.0" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="主题版本Butterfly_v4.3.1" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://vercel.com/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站采用多线部署，主线路托管于Vercel" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Vercel-brightgreen?style=flat&amp;logo=Vercel" alt=""/></a><a class="github-badge" target="_blank" href="https://dashboard.4everland.org/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站采用多线部署，备用线路托管于4EVERLAND" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-4EVERLAND-22DDDD?style=flat&amp;logo=IPFS" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站项目由Github托管" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></p>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="https://unpkg.zhimg.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.min.js"></script><!-- hexo injector body_end end --></body></html>
