@@ -155,7 +155,7 @@ else if ((lunar["IMonthCn"] == "九月" && lunar["IDayCn"] == "初九")) {
 else{
 
     if (sessionStorage.getItem("isPopupWindow") != "1") {
-        Swal.fire("此网站已接入tianliAI。若有不符的描述，请及时联系我们");
+        //Swal.fire("此网站已接入tianliAI。若有不符的描述，请及时联系我们");
         sessionStorage.setItem("isPopupWindow", "1");
     }
 
