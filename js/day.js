@@ -152,10 +152,10 @@ else if ((lunar["IMonthCn"] == "九月" && lunar["IDayCn"] == "初九")) {
         sessionStorage.setItem("isPopupWindow", "1");
     }
 }
-else{
+else if((y == 2024 && m == 11 && dd == 26) || (y == 2024 && m == 11 && dd == 25) ) {
 
     if (sessionStorage.getItem("isPopupWindow") != "1") {
-        //Swal.fire("此网站已接入tianliAI。若有不符的描述，请及时联系我们");
+        Swal.fire("祝考试顺利");
         sessionStorage.setItem("isPopupWindow", "1");
     }
 
