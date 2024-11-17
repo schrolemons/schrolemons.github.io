@@ -152,10 +152,9 @@ else if ((lunar["IMonthCn"] == "九月" && lunar["IDayCn"] == "初九")) {
         sessionStorage.setItem("isPopupWindow", "1");
     }
 }
-else if((y == 2024 && m == 11 && dd == 16) || (y == 2024 && m == 11 && dd == 15) ) {
-
+else  {
     if (sessionStorage.getItem("isPopupWindow") != "1") {
-        Swal.fire("祝考试顺利");
+        Swal.fire("欢迎关注第九边缘");
         sessionStorage.setItem("isPopupWindow", "1");
     }
 
