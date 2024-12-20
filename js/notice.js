@@ -196,7 +196,7 @@ function todis() {
                     `
                     <p style = "text-align: center; font-weight:bold;">---主域名---</p>
                     <p style = "text-align: center; ">
-                        <a target="_blank" rel="noopener" style = "text-align: center;" href="https://www.sch-nie.com/" title="此线路部署于vercel">
+                        <a target="_blank" rel="noopener" style = "text-align: center;" href="https://blog.sch-nie.com/" title="此线路部署于vercel">
                             <font color="#5ea6e5">sch-nie.com</font>
                  
                     </p>
