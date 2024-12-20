@@ -196,8 +196,22 @@ function todis() {
                     `
                     <p style = "text-align: center; font-weight:bold;">---主域名---</p>
                     <p style = "text-align: center; ">
+                        <a target="_blank" rel="noopener" style = "text-align: center;" href="https://www.sch-nie.com/" title="此线路部署于vercel">
+                            <font color="#5ea6e5">www.sch-nie.com</font>
+                 
+                    </p>
+                    
+                    
+                     <p style = "text-align: center; font-weight:bold;">---本站域名---</p>
+                    <p style = "text-align: center; ">
                         <a target="_blank" rel="noopener" style = "text-align: center;" href="https://blog.sch-nie.com/" title="此线路部署于vercel">
-                            <font color="#5ea6e5">sch-nie.com</font>
+                            <font color="#5ea6e5">blog.sch-nie.com</font>
+                 
+                    </p>
+                    
+                       <p style = "text-align: center; ">
+                        <a target="_blank" rel="noopener" style = "text-align: center;" href="https://schrolemons.github.io/" title="此线路部署于vercel">
+                            <font color="#5ea6e5">schrolemons.github.io</font>
                  
                     </p>
                     <p style = "text-align: center; font-weight:bold;">🎉 欢迎信息 🎉</p>
