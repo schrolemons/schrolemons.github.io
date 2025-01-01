@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          token: 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
+          token: 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
           # If your repository depends on submodule, please see: https://github.com/actions/checkout
           submodules: recursive
       - name: Use Node.js 20
