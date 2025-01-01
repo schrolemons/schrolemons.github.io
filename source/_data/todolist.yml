@@ -1,0 +1,135 @@
+- class_name: 学习技能
+  seat: left
+  todo_list:
+    - content: linux初步
+      completed: false
+    - content: 人工智能基础
+      completed: false
+    - content: 深度学习/机器学习
+      completed: false
+    - content: 西式哲学
+      completed: false
+    - content: 英语口语
+      completed: false
+    - content: 高等数学
+      completed: false
+    - content: 粒子物理
+      completed: false
+    - content: 博弈论
+      completed: false
+    - content: 制作网站
+      completed: false
+    - content: 完善博客
+      completed: true
+- class_name: 待发文章
+  seat: left
+  todo_list:
+    - content: 九虹重启：阳
+      completed: false
+    - content: 九虹重启：水
+      completed: false
+    - content: 九虹重启：金
+      completed: false
+    - content: 九虹重启：火
+      completed: false
+    - content: 灵耀体系：阳
+      completed: false
+    - content: 灵耀体系：土灭流辰
+      completed: false
+    - content: 灵耀体系：草
+      completed: false
+- class_name: 待完善
+  seat: left
+  todo_list:
+    - content: 第九边缘：冰海艺术
+      completed: false
+    - content: 第九边缘：水域纷战
+      completed: false
+    - content: 第九边缘：琢刻之木
+      completed: false
+    - content: 第九边缘：世界观/人生观/自然观
+      completed: false
+    - content: 第九边缘：火神契约
+      completed: false
+    - content: 第九边缘：木显神名（未上线）
+      completed: false
+- class_name: 生活记录
+  seat: right
+  todo_list:
+    - content: 坚持背单词（天**的，就还一次机会了）
+      completed: true
+    - content: 坚持练习英语听力
+      completed: true
+    - content: 天天刷洛谷
+      completed: true
+    - content: 尝试玩原神（回归）
+      completed: true
+    - content: 整理算法模板
+      completed: false
+
+- class_name: 想做的事情
+  seat: right
+  todo_list:
+    - content: 正式参加XCPC（估计无望）
+      completed: false
+    - content: codeforces 1900+
+      completed: false
+    - content: 绩点刷到3.9
+      completed: false
+    - content: 非混子的科研
+      completed: false
+
+- class_name: 美食
+  seat: left
+  todo_list:
+    - content: 找到一杯百喝不腻的奶茶
+      completed: false
+    - content: 找到在JLDX能活过一年的午餐
+      completed: true
+    - content: 找到味道不奇怪的小蛋糕
+      completed: false
+    - content: 找到不会让我肚子疼的牛奶:telunsu
+      completed: true
+    - content: 找到认可的冰棒品牌
+      completed: false
+
+- class_name: 宣传
+  seat: right
+  todo_list:
+    - content: 个人博客
+      completed: true
+    - content: 微信公众号
+      completed: true
+    - content: QQ群/QQ发布号
+      completed: true
+    - content: 官网
+      completed: false
+    - content: 文化企业
+      completed: false
+
+- class_name: 社交
+  seat: right
+  todo_list:
+    - content: 学业内题目能100%做对的
+      completed: false
+    - content: 科研项目几天一个的
+      completed: false
+    - content: 能通过第九边缘测试题的
+      completed: true
+    - content: 新学期愿意做第九边缘测试题的
+      completed: false
+    - content: 想了解第九边缘的
+      completed: false
+    - content: 网络冲浪高手
+      completed: false
+    - content: 符合第九理性的
+      completed: false
+    - content: ACM高手
+      completed: true
+    - content: CTF高手
+      completed: true
+    - content: 写作/阅读高手
+      completed: false
+    - content: 计算机天才
+      completed: false
+

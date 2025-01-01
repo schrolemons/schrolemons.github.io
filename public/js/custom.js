@@ -1,3 +1,15 @@
+if (document.querySelector('#bber-talk')) {
+    var swiper = new Swiper('.swiper-container', {
+        direction: 'vertical', // 垂直切换选项
+        loop: true,
+        autoplay: {
+            delay: 3000,
+            pauseOnMouseEnter: true
+        },
+    });
+}
+
+
 var percentFlag = false; // 节流阀
 function essayScroll() {
     let a = document.documentElement.scrollTop || window.pageYOffset; // 卷去高度
@@ -177,3 +189,19 @@ function switchPostChart () {
     }
 }
 document.getElementById("mode-button").addEventListener("click", function () { setTimeout(switchPostChart, 100) })
+
+// 发现有时会和当前页面重复，加一个判断
+function randomPost() {
+    fetch('/baidusitemap.xml').then(res => res.text()).then(str => (new window.DOMParser()).parseFromString(str, "text/xml")).then(data => {
+        let ls = data.querySelectorAll('url loc');
+        while (true) {
+            let url = ls[Math.floor(Math.random() * ls.length)].innerHTML;
+            if (location.href == url) continue;
+            location.href = url;
+            return;
+        }
+    })
+}
+
+
+

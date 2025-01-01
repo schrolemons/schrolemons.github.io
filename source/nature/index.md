@@ -1,4 +1,22 @@
-
+---
+title: 自然-神系
+date: 2024-09-01 11:44:03
+tags: SCHNIE
+categories: 世界之核
+copyright_author: Merdingersher
+---
+<script>
+    (function(d, w, c) {
+        w.ChatraID = 'D5JbrYK4vHavdTNTf';
+        var s = d.createElement('script');
+        w[c] = w[c] || function() {
+            (w[c].q = w[c].q || []).push(arguments);
+        };
+        s.async = true;
+        s.src = 'https://call.chatra.io/chatra.js';
+        if (d.head) d.head.appendChild(s);
+    })(document, window, 'Chatra');
+</script>
 # Two:第九边缘关于自然的一个判断
 
 Nurture will create a whole world 自然包含整个世界的所有答案
@@ -16,7 +34,7 @@ Nurture will create a whole world 自然包含整个世界的所有答案
 由于木元素在该论述中能表示信仰，故我们将五行分布凸显为木正位（按金水木火土依次连接，使木元素处于图案最上方且与相邻元素组成的角度最大。同时，需保证将图案最上部分向下翻转后，与规范的五行相生相克表一致）。并以风土水火元素为框架，按照克制关系和协和关系，制表如下：
 
 
-![自然观](/pictrues/ziran.png)
+![自然观](/pictures/ziran.png)
 
 
 说明：相同编号为相和，对线元素为对立。相和即在自然界中能够和谐共存，对立即在自然界中难以同时存在，但能够在特定条件下存在。

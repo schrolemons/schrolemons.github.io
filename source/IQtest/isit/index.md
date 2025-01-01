@@ -1,4 +1,20 @@
+---
+title: 灵感探寻测试
+date: 2024-09-01 11:44:03
+---
 ## Inspiration Search IQ Test
+<script>
+    (function(d, w, c) {
+        w.ChatraID = 'D5JbrYK4vHavdTNTf';
+        var s = d.createElement('script');
+        w[c] = w[c] || function() {
+            (w[c].q = w[c].q || []).push(arguments);
+        };
+        s.async = true;
+        s.src = 'https://call.chatra.io/chatra.js';
+        if (d.head) d.head.appendChild(s);
+    })(document, window, 'Chatra');
+</script>
 灵感探寻测试
 测试说明：
 活动期间本测试免费提交，并且在达到15分、25分、35分以上时，可分别获得5、5、10元奖励。在提交人数达到30后，排名在前30%的人可获得排名奖励，具体细则待定。

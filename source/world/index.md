@@ -1,4 +1,22 @@
-
+---
+title: 宇宙-世界
+date: 2024-09-01 11:44:03
+tags: SCHNIE
+categories: 世界之核
+copyright_author: Merdingersher
+---
+<script>
+    (function(d, w, c) {
+        w.ChatraID = 'D5JbrYK4vHavdTNTf';
+        var s = d.createElement('script');
+        w[c] = w[c] || function() {
+            (w[c].q = w[c].q || []).push(arguments);
+        };
+        s.async = true;
+        s.src = 'https://call.chatra.io/chatra.js';
+        if (d.head) d.head.appendChild(s);
+    })(document, window, 'Chatra');
+</script>
 # Zero:第九边缘关于世界边缘的一个猜想
 
 Nine Sections about a real world 所有的内核与本质皆存在于理论计算中
@@ -961,7 +979,7 @@ Descriptions-
 11.二级记忆能模拟刺激，从而使思维体提前兴奋或远离危险。
 
 12.大量相似记忆的产生会导致新产生的部分差异模糊化，导致自我意识不包含新的特征。记忆可以加速处理相似记忆时的记录过程。
-![意识弧](/pictrues/yishihu.png)
+![意识弧](/pictures/yishihu.png)
 
 
 
@@ -985,10 +1003,10 @@ C：某思维体被外界观测时，能产生多种不同的特征。且这多�
 D：思维体能在1线观测到2线所连接的时间点的状态，但不能被2线所连接的时间点观测。3线观测1线时，2线结束，思维体从1线连回主时空。3线观测2线时，1线结束，思维体从2线连回主时空。
 
 其中1线为纠缠态，不进行发生率分歧。
-![时空间的关系1](/pictrues/shikongjian.png)
+![时空间的关系1](/pictures/shikongjian.png)
 E:X思维体先为1可能性，Y思维体先为2可能性。纠缠状态启动并且外界对纠缠态观测时，X（1）转化为Y（1）并在2时间点，Y（2）转化为X（2）并在1时间点。由于X（1）与Y（1）冲突，所以X（1）线消失。此时Y（1）与X（2）为重合关系。
 
-![时空间的关系2](/pictrues/shikongjian2.png)
+![时空间的关系2](/pictures/shikongjian2.png)
 
 
 
@@ -1019,7 +1037,7 @@ E:X思维体先为1可能性，Y思维体先为2可能性。纠缠状态启动�
 
 思维体有许多不同的形态单元，他们共同构成思维体的形态和协助整体进行思维活动。封装信息意味着产生有相联关系的但不属于同一记载单元的多线。此外，三种单元均具有自我复制和销毁的能力，本质上是量元表观能力的内在划分，而非实际存在的功能。
 
-![形态单元](/pictrues/xingtai.png)
+![形态单元](/pictures/xingtai.png)
 
 #### Descriptions2-
 
@@ -1038,7 +1056,7 @@ E:X思维体先为1可能性，Y思维体先为2可能性。纠缠状态启动�
 
 
 
-![记忆单元](/pictrues/jiyi.png)
+![记忆单元](/pictures/jiyi.png)
 
 
 
@@ -1070,5 +1088,5 @@ E:X思维体先为1可能性，Y思维体先为2可能性。纠缠状态启动�
 自然状态下四线不断重复结合，分离的过程。1，2，3发挥作用后自我销毁并恢复至原始状态，4线保留并不断传递信息。信息可被消耗和磨损。
 
 
-![记载单元](/pictrues/jizai.png)
+![记载单元](/pictures/jizai.png)
  

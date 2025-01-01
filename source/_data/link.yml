@@ -10,16 +10,23 @@
 - class_name: 2.友情链接
   class_desc: 一些好朋友~~
   link_list:
-    - name: Fomalhaut🥝
-      link: https://fomal.cc/
-      avatar: /assets/head.jpg
-      descr: Future is now 🍭🍭🍭
-      siteshot: https://source.fomal.cc/siteshot/www.fomal.cn.jpg
     - name: schrolemons
-      link: https://sch-nie.com/
+      offline: true
+      link: https://blog.sch-nie.com/
       avatar: https://picbed.sch-nie.com/img/SCHNIE.png
       descr: 和自己交朋友
     - name: Oracle
+      offline: true
       link: https://www.baoyf.com/
       avatar: https://www.baoyf.com/img/head.jpg
       descr: 我欲因之梦吴越，一夜飞度镜湖月
+
+- class_name: 3.魔改来源
+  class_desc: 基础结构
+  link_list:
+    - name: Fomalhaut🥝
+      offline: true
+      link: https://fomal.cc/
+      avatar: https://sourcebucket.s3.bitiful.net/img/avatar.webp
+      descr: Future is now 🍭🍭🍭
+      siteshot: https://source.fomal.cc/siteshot/www.fomal.cn.jpg

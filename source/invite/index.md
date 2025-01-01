@@ -1,3 +1,19 @@
+---
+title: 通过我们的邀请，成为我们的一员
+date: 2024-09-01 11:44:03
+---
+<script>
+    (function(d, w, c) {
+        w.ChatraID = 'D5JbrYK4vHavdTNTf';
+        var s = d.createElement('script');
+        w[c] = w[c] || function() {
+            (w[c].q = w[c].q || []).push(arguments);
+        };
+        s.async = true;
+        s.src = 'https://call.chatra.io/chatra.js';
+        if (d.head) d.head.appendChild(s);
+    })(document, window, 'Chatra');
+</script>
 ## 2024年SCHNIE第九边缘协会非正式招新：邀请函
 诚邀您加入第九边缘协会。
 第九边缘协会致力于构建宇宙世界观体系、人生价值体系、自然神话体系，并在此基础上，构建属于我们自己风格的文学。
