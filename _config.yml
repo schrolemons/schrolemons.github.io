@@ -104,7 +104,7 @@ theme: butterfly
 deploy:
   - type: git
     repository: git@github.com:schrolemons/schrolemons.github.io.git
-    branch: main
+    branch: gh-pages
   - type: baidu_url_submitter
 
 search:
