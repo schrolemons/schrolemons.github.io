@@ -8,7 +8,7 @@
     display: none;
 }
 #web_bg ~ .page:has(#essay_page) {
-    background: var(/pictures/create.png);
+    background: var();
 }
 #bber .bber-container-img {
     display: flex;
@@ -235,7 +235,7 @@
 .author-content.author-content-item.essayPage {
     height: 19rem;
     background: url(https://picbed.sch-nie.com/img/todolist.png) left 28% / cover no-repeat;
-    color: var(--anzhiyu-white);
+    color: var();
     overflow: hidden;
     margin-top: 0px;
 }
