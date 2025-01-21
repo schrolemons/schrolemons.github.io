@@ -312,4 +312,3 @@ function changeMouseMode() {
         }, 300);
     }
 }
-
