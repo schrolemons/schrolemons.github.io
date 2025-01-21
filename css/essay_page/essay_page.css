@@ -8,7 +8,7 @@
     display: none;
 }
 #web_bg ~ .page:has(#essay_page) {
-    background: var(--anzhiyu-background);
+    background: var(/pictures/create.png);
 }
 #bber .bber-container-img {
     display: flex;
@@ -234,7 +234,7 @@
 /* 顶部样式 */
 .author-content.author-content-item.essayPage {
     height: 19rem;
-    background: url(https://picbed.sch-nie.com/img/ground2.jpg) left 28% / cover no-repeat;
+    background: url(https://picbed.sch-nie.com/img/todolist.png) left 28% / cover no-repeat;
     color: var(--anzhiyu-white);
     overflow: hidden;
     margin-top: 0px;
