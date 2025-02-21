@@ -194,10 +194,16 @@ function todis() {
 
                 document.getElementsByClassName("announcement_content")[0].innerHTML =
                     `
-                    <p style = "text-align: center; font-weight:bold;">---主域名---</p>
+                    <p style = "text-align: center; font-weight:bold;">---元站域名---</p>
                     <p style = "text-align: center; ">
                         <a target="_blank" rel="noopener" style = "text-align: center;" href="https://www.sch-nie.com/" title="此线路部署于vercel">
                             <font color="#5ea6e5">www.sch-nie.com</font>
+                 
+                    </p>
+                        <p style = "text-align: center; font-weight:bold;">---世界观域名---</p>
+                    <p style = "text-align: center; ">
+                        <a target="_blank" rel="noopener" style = "text-align: center;" href="https://world.sch-nie.com/" title="此线路部署于vercel">
+                            <font color="#5ea6e5">world.sch-nie.com</font>
                  
                     </p>
                     
