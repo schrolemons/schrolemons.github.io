@@ -227,7 +227,7 @@ function todis() {
                     </p>
                     
                     <p style = "text-align: center; ">
-                    &nbsp&nbsp 联系邮箱：schnie@foxmail.com
+                    &nbsp&nbsp 联系邮箱：zero@sch-nie.com
                     
                     </p>
                      <p style = "text-align: center; font-weight:bold;">🎉 参考文件下载 🎉</p>
