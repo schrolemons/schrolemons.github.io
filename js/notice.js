@@ -230,12 +230,7 @@ function todis() {
                     &nbsp&nbsp 联系邮箱：zero@sch-nie.com
                     
                     </p>
-                     <p style = "text-align: center; font-weight:bold;">🎉 参考文件下载 🎉</p>
-                      <p style = "text-align: center; ">
-                        <a target="_blank" rel="noopener" style = "text-align: center;" href="https://picbed.sch-nie.com/SCHNIE/%E7%AC%AC%E4%B9%9D%E8%BE%B9%E7%BC%98%E6%96%87%E5%8C%96%E4%BD%93%E7%B3%BB%EF%BC%9A%E6%A6%82%E8%AE%BA.pdf" title="点击下载pdf文件">
-                            <font color="#5ea6e5">第九边缘文件体系：概论.pdf</font>
-                 
-                    </p>
+
                     `;
             }
             showWelcome()
