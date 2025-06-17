@@ -1,26 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://blog.sch-nie.com/posts/3.html</loc>
-    <lastmod>2025-03-10</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.sch-nie.com/posts/2.html</loc>
-    <lastmod>2025-03-10</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.sch-nie.com/posts/1.html</loc>
-    <lastmod>2025-03-10</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.sch-nie.com/nature/index.html</loc>
-    <lastmod>2025-02-21</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.sch-nie.com/value/index.html</loc>
-    <lastmod>2025-02-21</lastmod>
-  </url>
-  <url>
     <loc>https://blog.sch-nie.com/posts/a5baeaeb.html</loc>
     <lastmod>2024-11-02</lastmod>
   </url>
@@ -61,6 +41,10 @@
     <lastmod>2024-10-09</lastmod>
   </url>
   <url>
+    <loc>https://blog.sch-nie.com/posts/bc7c7b.html</loc>
+    <lastmod>2024-10-09</lastmod>
+  </url>
+  <url>
     <loc>https://blog.sch-nie.com/posts/29d1b803.html</loc>
     <lastmod>2024-10-09</lastmod>
   </url>
@@ -69,27 +53,7 @@
     <lastmod>2024-10-09</lastmod>
   </url>
   <url>
-    <loc>https://blog.sch-nie.com/posts/bc7c7b.html</loc>
-    <lastmod>2024-10-09</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.sch-nie.com/world/index.html</loc>
-    <lastmod>2024-09-24</lastmod>
-  </url>
-  <url>
     <loc>https://blog.sch-nie.com/posts/6b6b7c33.html</loc>
     <lastmod>2024-09-24</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.sch-nie.com/posts/6.html</loc>
-    <lastmod>2024-09-06</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.sch-nie.com/posts/7.html</loc>
-    <lastmod>2024-09-01</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.sch-nie.com/posts/8.html</loc>
-    <lastmod>2024-09-01</lastmod>
   </url>
 </urlset> 
