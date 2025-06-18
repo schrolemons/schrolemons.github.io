@@ -188,7 +188,10 @@ function switchPostChart () {
         }
     }
 }
-document.getElementById("mode-button").addEventListener("click", function () { setTimeout(switchPostChart, 100) })
+
+$(document).ready(function () {
+    document.getElementById("mode-button").addEventListener("click", function () { setTimeout(switchPostChart, 100) })
+});
 
 // 发现有时会和当前页面重复，加一个判断
 function randomPost() {
