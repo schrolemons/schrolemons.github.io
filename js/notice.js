@@ -197,13 +197,13 @@ function todis() {
                     <p style = "text-align: center; font-weight:bold;">---元站域名---</p>
                     <p style = "text-align: center; ">
                         <a target="_blank" rel="noopener" style = "text-align: center;" href="https://www.sch-nie.com/" title="此线路部署于vercel">
-                            <font color="#5ea6e5">www.sch-nie.com</font>
+                            <font color="#5ea6e5">www.sch-nie.com</font></a>
                  
                     </p>
                         <p style = "text-align: center; font-weight:bold;">---世界观域名---</p>
                     <p style = "text-align: center; ">
                         <a target="_blank" rel="noopener" style = "text-align: center;" href="https://world.sch-nie.com/" title="此线路部署于vercel">
-                            <font color="#5ea6e5">world.sch-nie.com</font>
+                            <font color="#5ea6e5">world.sch-nie.com</font></a>
                  
                     </p>
                     
@@ -211,25 +211,17 @@ function todis() {
                      <p style = "text-align: center; font-weight:bold;">---本站域名---</p>
                     <p style = "text-align: center; ">
                         <a target="_blank" rel="noopener" style = "text-align: center;" href="https://blog.sch-nie.com/" title="此线路部署于vercel">
-                            <font color="#5ea6e5">blog.sch-nie.com</font>
+                            <font color="#5ea6e5">blog.sch-nie.com</font></a>
                  
                     </p>
                     
                        <p style = "text-align: center; ">
                         <a target="_blank" rel="noopener" style = "text-align: center;" href="https://schrolemons.github.io/" title="此线路部署于vercel">
-                            <font color="#5ea6e5">schrolemons.github.io</font>
+                            <font color="#5ea6e5">schrolemons.github.io</font></a>
                  
                     </p>
-                    <p style = "text-align: center; font-weight:bold;">🎉 欢迎信息 🎉</p>
                     
-                     <p style = "text-align: center; ">
-                    欢迎您加入我们创造的世界。
-                    </p>
-                    
-                    <p style = "text-align: center; ">
-                    &nbsp&nbsp 联系邮箱：zero@sch-nie.com
-                    
-                    </p>
+                
 
                     `;
             }
