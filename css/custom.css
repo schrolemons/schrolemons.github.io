@@ -285,7 +285,7 @@ li.todolist-li{
     height: 20.5rem;
     padding: 10px 2.7rem;
     border-radius: 20px;
-    color: white;
+    color: #f8b632;
     position: relative;
 }
 .page-top-card span.content-item-title{
@@ -330,13 +330,13 @@ li.todolist-li{
 }
 
 
-
+/*
 /* 波浪css */
 .main-hero-waves-area {
     width: 100%;
     position: absolute;
     left: 0;
-    bottom: -11px;
+    bottom: -109px;
     z-index: 5;
 }
 .waves-area .waves-svg {
@@ -440,4 +440,18 @@ li.todolist-li{
 
 
 
-
+/*导航栏*/
+.nav-fixed #nav{
+    transform: translateY(58px)!important;
+    -webkit-transform: translateY(58px)!important;
+    -moz-transform: translateY(58px)!important;
+    -ms-transform: translateY(58px)!important;
+    -o-transform: translateY(58px)!important;
+}
+#nav{
+    transition: none!important;
+    -webkit-transition: none!important;
+    -moz-transition: none!important;
+    -ms-transition: none!important;
+    -o-transition: none!important;
+}

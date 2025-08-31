@@ -206,5 +206,20 @@ function randomPost() {
     })
 }
 
+function darkmod(){
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+
+}
+
+function lightmod(){
+    document.documentElement.setAttribute('data-theme', 'light')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+        document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+    }
+}
+
 
 

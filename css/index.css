@@ -3553,7 +3553,7 @@ h1.page-title + .tag-cloud-list {
 }
 #page-header #site-title {
   margin: 0;
-  color: var(--white);
+  color: var(--dark);
   font-size: 1.85em;
 }
 @media screen and (min-width: 768px) {
@@ -3627,9 +3627,10 @@ h1.page-title + .tag-cloud-list {
 }
 #page-header #post-info {
   position: absolute;
-  bottom: 30px;
+  bottom: 100px;
   padding: 0 8%;
   width: 100%;
+  text-align: center;
 }
 @media screen and (max-width: 768px) {
   #page-header #post-info {
@@ -4552,21 +4553,6 @@ h1.page-title + .tag-cloud-list {
   #rightside #hide-aside-btn {
     display: none;
   }
-}
-#rightside #go-up .scroll-percent {
-  display: none;
-}
-#rightside #go-up.show-percent .scroll-percent {
-  display: block;
-}
-#rightside #go-up.show-percent .scroll-percent + i {
-  display: none;
-}
-#rightside #go-up:hover .scroll-percent {
-  display: none;
-}
-#rightside #go-up:hover .scroll-percent + i {
-  display: block;
 }
 #sidebar #menu-mask {
   position: fixed;

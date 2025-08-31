@@ -94,9 +94,11 @@ rmf.copySelect = function () {
 
 //回到顶部
 rmf.scrollToTop = function () {
-    document.getElementsByClassName("menus_items")[1].setAttribute("style", "");
-    document.getElementById("name-container").setAttribute("style", "display:none");
-    btf.scrollToDest(0, 500);
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'  // 添加平滑滚动效果
+    });
+
 }
 
 document.body.addEventListener('touchmove', function () {
