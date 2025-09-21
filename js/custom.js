@@ -211,7 +211,12 @@ function darkmod(){
         if (document.querySelector('meta[name="theme-color"]') !== null) {
             document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
         }
-
+    swal({
+        position: 'top-end',
+        icon: 'success',
+        button: false,
+        timer: 1500
+    });
 }
 
 function lightmod(){
@@ -219,6 +224,12 @@ function lightmod(){
     if (document.querySelector('meta[name="theme-color"]') !== null) {
         document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
     }
+    swal({
+        position: 'top-end',
+        icon: 'success',
+        button: false,
+        timer: 1500
+    });
 }
 
 
