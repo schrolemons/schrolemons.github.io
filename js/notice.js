@@ -1,5 +1,5 @@
-document.addEventListener('pjax:complete', todis);
-document.addEventListener('DOMContentLoaded', todis);
+document.addEventListener('pjax:complete', function () { setTimeout(todis, 300) });
+window.addEventListener('load', function () { setTimeout(todis, 500) });
 function todis() {
     $.ajax({
         type: 'get',
@@ -11,6 +11,10 @@ function todis() {
         dataType: 'jsonp',
         success: function (res) {
             ipLoacation = res;
+            if (!res || !res.result || !res.result.location || !res.result.ad_info) {
+                console.warn('notice.js: 腾讯地图 IP 定位返回异常，使用默认欢迎语');
+                return;
+            }
             function getDistance(e1, n1, e2, n2) {
                 const R = 6371
                 const { sin, cos, asin, PI, hypot } = Math

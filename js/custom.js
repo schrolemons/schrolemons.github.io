@@ -219,6 +219,17 @@ function darkmod(){
     });
 }
 
+document.getElementById('go-down') && document.getElementById('go-down').addEventListener('click', function () {
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+});
+
+var rightsideToggle = document.getElementById('rightside-toggle');
+if (rightsideToggle) {
+    rightsideToggle.addEventListener('click', function () {
+        document.getElementById('rightside').classList.toggle('open');
+    });
+}
+
 function lightmod(){
     document.documentElement.setAttribute('data-theme', 'light')
     if (document.querySelector('meta[name="theme-color"]') !== null) {

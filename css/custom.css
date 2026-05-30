@@ -4,6 +4,66 @@
     width: 100%;
     margin: auto;
 }
+
+/* 右下角按钮样式 */
+#rightside > button,
+#rightside #rightside-items > button,
+#rightside #rightside-items > div {
+    display: block;
+    margin-bottom: 5px;
+    width: 35px;
+    height: 35px;
+    background: var(--btn-bg, #49b1f5) !important;
+    color: var(--btn-color, #fff) !important;
+    text-align: center;
+    font-size: 16px;
+    line-height: 35px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none !important;
+    padding: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+#rightside > button:hover,
+#rightside #rightside-items > button:hover,
+#rightside #rightside-items > div:hover {
+    background: var(--btn-hover-color, #ff7242) !important;
+    color: #fff !important;
+}
+
+/* 展开时提权防重叠 */
+#rightside.open {
+    z-index: 101;
+}
+
+/* 收起/展开菜单 */
+#rightside-items {
+    display: none;
+}
+#rightside.open #rightside-items {
+    display: block;
+}
+
+/* 阅读进度 */
+#rightside #go-up .scroll-percent {
+    display: none;
+    font-size: 12px;
+}
+#rightside #go-up.show-percent .scroll-percent {
+    display: inline;
+}
+#rightside #go-up.show-percent .scroll-percent + i {
+    display: none;
+}
+#rightside #go-up:hover .scroll-percent {
+    display: none;
+}
+#rightside #go-up:hover .scroll-percent + i {
+    display: inline;
+}
+
 /* 一级菜单居中 */
 #nav .menus_items {
     position: absolute !important;
