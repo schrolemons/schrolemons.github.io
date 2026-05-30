@@ -7,9 +7,7 @@
 
 /* 右下角按钮样式 */
 #rightside > button,
-#rightside #rightside-items > button,
 #rightside #rightside-items > div {
-    display: block;
     margin-bottom: 5px;
     width: 35px;
     height: 35px;
@@ -21,13 +19,9 @@
     border-radius: 5px;
     cursor: pointer;
     border: none !important;
-    padding: 0;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+    padding: 0 !important;
 }
 #rightside > button:hover,
-#rightside #rightside-items > button:hover,
 #rightside #rightside-items > div:hover {
     background: var(--btn-hover-color, #ff7242) !important;
     color: #fff !important;
