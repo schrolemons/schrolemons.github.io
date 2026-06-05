@@ -314,18 +314,31 @@ div#archive {
     border: 2px dashed #51908b;
 }
 li.todolist-li i{
-    margin-left: 10px;
+    margin-right: 8px;
+    font-size: 1rem;
+    color: #f7a796;
+}
+[data-theme=dark] li.todolist-li i{
+    color: #51908b;
 }
 h3.todolist-title{
-    margin: 0!important;
-    border-bottom: var(#51908b);
+    margin: 0 0 0.5rem 0 !important;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid #f7a796;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+[data-theme=dark] h3.todolist-title{
+    border-bottom-color: #51908b;
 }
 li.todolist-li{
-    border-bottom: var(#51908b);
+    padding: 4px 0;
     font-weight: normal;
+    display: flex;
+    align-items: center;
 }
 .todolist-li span{
-    margin-left: 5px;
+    line-height: 1.5;
 }
 @media screen and (max-width:700px){
     #todolist-left,#todolist-right{
@@ -336,25 +349,27 @@ li.todolist-li{
 .page-top-card{
     background-size: cover;
     background-position: center;
-    height: 20.5rem;
-    padding: 10px 2.7rem;
+    height: 18rem;
+    padding: 2rem 2.7rem;
     border-radius: 20px;
     color: #f8b632;
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.page-top-card .content-item-tips{
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
 }
 .page-top-card span.content-item-title{
-    font-size: 2.3em;
+    font-size: 2.8rem;
     font-weight: bold;
     line-height: 1.2;
     font-family: STZhongsong,'Microsoft YaHei';
+    margin-bottom: 1.5rem;
 }
 .page-top-card .content-bottom{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: absolute;
-    width: calc(100% - 5.4rem);
-    bottom: 1rem;
+    font-size: 1rem;
 }
 [data-theme='dark'] .page-top-card{
     opacity: .92;
