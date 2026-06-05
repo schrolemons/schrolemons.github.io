@@ -111,17 +111,19 @@
    ======================================== */
 .records-main {
   flex: 1;
-  overflow-y: auto;
   display: flex;
   flex-direction: column;
   background: #fff;
-  -webkit-overflow-scrolling: touch;
+  min-height: 0;
 }
 
 .records-conv {
   display: none;
   flex-direction: column;
   flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 #records-tab-0:checked ~ .records-main #conv-0,
@@ -137,7 +139,7 @@
   display: flex;
 }
 
-/* ---- 标题栏 ---- */
+/* ---- 标题栏（sticky 固定）---- */
 .records-conv-header {
   display: flex;
   align-items: baseline;
@@ -146,6 +148,9 @@
   border-bottom: 1px solid #eee;
   flex-shrink: 0;
   background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 .records-conv-title { font-size: 1.05rem; font-weight: 600; color: #222; }
 .records-conv-subtitle {
@@ -155,11 +160,9 @@
 .records-subtitle-icon { font-size: .75rem; color: #f0a500; }
 .records-conv-time { font-size: .8rem; color: #aaa; margin-left: auto; }
 
-/* ---- 消息区 ---- */
+/* ---- 消息区（不再独立滚动）---- */
 .records-conv-messages {
-  flex: 1;
-  overflow-y: auto;
-  padding: 20px 0;
+  padding: 20px 0 40px;
   width: 100%;
 }
 
@@ -382,8 +385,8 @@
 [data-theme="dark"] .records-main { background: #212327; }
 
 [data-theme="dark"] .records-conv-header {
-  background: #212327;
-  border-bottom-color: #2a2a2e;
+  background: #1e1e20;
+  border-color: #2a2a2c;
 }
 [data-theme="dark"] .records-conv-title { color: #eee; }
 [data-theme="dark"] .records-conv-subtitle,
@@ -400,6 +403,7 @@
 [data-theme="dark"] .records-thinking-line { background: #333; }
 [data-theme="dark"] .records-user .records-msg-bubble .records-list-item { color: #aab8d4; }
 [data-theme="dark"] .records-list-item::before { background: #555; }
+[data-theme="dark"] .records-hamburger-icon { background: #aaa; }
 [data-theme="dark"] .records-thinking-text p { color: #777 !important; }
 
 /* ========================================
@@ -409,7 +413,18 @@
 /* ---- 汉堡菜单（默认隐藏，移动端显示）---- */
 .records-hamburger-check { display: none; }
 .records-overlay { display: none; }
-.records-hamburger-btn { display: none; }
+.records-hamburger-btn {
+  display: none;
+  flex-shrink: 0;
+  width: 28px; height: 28px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: 2px;
+}
 
 /* ---- 平板 / 小屏桌面 ---- */
 @media screen and (max-width: 900px) {
@@ -460,24 +475,15 @@
 
 /* ---- 手机横屏 / 大屏手机（启用汉堡菜单）---- */
 @media screen and (max-width: 600px) {
-  /* ---- 汉堡按钮 ---- */
+  /* ---- 汉堡按钮（内嵌在标题栏左侧）---- */
   .records-hamburger-btn {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    width: 26px; height: 26px;
     gap: 4px;
-    position: absolute;
-    top: 16px; left: 16px;
-    z-index: 50;
-    width: 36px; height: 36px;
-    border-radius: 8px;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
   }
   .records-hamburger-icon {
     display: block;
-    width: 20px; height: 2px;
+    width: 16px; height: 2px;
     background: #555;
     border-radius: 1px;
     transition: transform .25s ease, opacity .25s ease;
@@ -552,10 +558,10 @@
   .records-sidebar-text { display: block; }
 
   /* ---- 主内容区 ---- */
-  .records-conv-header { padding: 10px 12px 6px 52px; }
+  .records-conv-header { padding: 10px 14px 8px; }
   .records-conv-subtitle { font-size: .72rem; }
-  .records-msg { padding: 6px 4% 6px 3%; gap: 8px; }
-  .records-user .records-msg-bubble { max-width: 85%; border-radius: 12px 4px 12px 12px; padding: 7px 10px; }
+  .records-msg { padding: 8px 6% 8px 5%; gap: 8px; }
+  .records-user .records-msg-bubble { max-width: 82%; border-radius: 12px 4px 12px 12px; padding: 8px 12px; }
   .records-ai .records-msg-bubble p,
   .records-user .records-msg-bubble p { font-size: .85rem; line-height: 1.55; }
 
@@ -573,9 +579,10 @@
   .records-layout { margin: 0; height: 100dvh; border-radius: 0; }
 
   .records-hamburger-btn {
-    top: 12px; left: 12px;
-    width: 34px; height: 34px;
+    width: 24px; height: 24px;
+    gap: 3px;
   }
+  .records-hamburger-icon { width: 14px; }
 
   /* 侧栏高度撑满 */
   .records-sidebar {
@@ -596,15 +603,15 @@
   .records-sidebar-text { display: block; }
 
   .records-conv-header {
-    padding: 10px 12px 6px 48px;
-    gap: 2px 6px;
+    padding: 10px 12px 6px;
+    gap: 6px;
   }
   .records-conv-title { font-size: .9rem; }
   .records-conv-time { font-size: .7rem; }
   .records-conv-subtitle { font-size: .7rem; }
 
-  .records-msg { padding: 7px 5% 7px 4%; gap: 6px; }
-  .records-user .records-msg-bubble { max-width: 85%; padding: 7px 10px; border-radius: 10px 3px 10px 10px; }
+  .records-msg { padding: 10px 7% 10px 6%; gap: 6px; }
+  .records-user .records-msg-bubble { max-width: 80%; padding: 8px 10px; border-radius: 10px 3px 10px 10px; }
   .records-ai .records-msg-avatar { display: none; }
   .records-ai .records-msg-bubble p,
   .records-user .records-msg-bubble p { font-size: .82rem; line-height: 1.5; }
@@ -631,17 +638,18 @@
   .records-sidebar-text { display: block; }
 
   .records-hamburger-btn {
-    top: 10px; left: 10px;
-    width: 30px; height: 30px;
+    width: 22px; height: 22px;
+    gap: 3px;
   }
+  .records-hamburger-icon { width: 13px; }
 
-  .records-conv-header { padding: 8px 10px 4px 44px; }
+  .records-conv-header { padding: 8px 10px 4px; }
   .records-conv-title { font-size: .85rem; }
   .records-conv-time { font-size: .66rem; }
 
-  .records-conv-messages { padding: 10px 0; }
-  .records-msg { padding: 5px 6% 5px 5%; gap: 4px; }
-  .records-user .records-msg-bubble { max-width: 88%; padding: 5px 8px; border-radius: 8px 3px 8px 8px; }
+  .records-conv-messages { padding: 12px 0 30px; }
+  .records-msg { padding: 6px 8% 6px 7%; gap: 4px; }
+  .records-user .records-msg-bubble { max-width: 84%; padding: 6px 8px; border-radius: 8px 3px 8px 8px; }
   .records-ai .records-msg-avatar { display: none; }
   .records-ai .records-msg-bubble p,
   .records-user .records-msg-bubble p { font-size: .8rem; line-height: 1.48; }
