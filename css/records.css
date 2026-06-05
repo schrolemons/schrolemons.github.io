@@ -1,0 +1,407 @@
+/* ========================================
+   SCHNIE 聊天 —— DeepSeek 风格界面
+   ======================================== */
+
+/* ---- 隐藏 radio ---- */
+.records-radio {
+  display: none;
+}
+
+/* ---- 页面容器 override ---- */
+#content-inner:has(#records_page) {
+  padding: 0 !important;
+  max-width: 100% !important;
+  background: transparent !important;
+}
+#page:has(#records_page) > .page-title {
+  display: none;
+}
+
+/* ---- 横幅背景 ---- */
+#records_page .page-top-card {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 100vh;
+  z-index: -1;
+  opacity: .06;
+  background-size: cover;
+  background-position: center;
+  filter: blur(2px);
+}
+
+/* ========================================
+   双栏容器 —— 四周留白，浮起圆角
+   ======================================== */
+.records-layout {
+  display: flex;
+  max-width: 1100px;
+  height: calc(100vh - 60px - 36px);
+  margin: 18px auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 32px rgba(0, 0, 0, .06);
+}
+
+/* ---- 左侧栏 ---- */
+.records-sidebar {
+  width: 260px;
+  min-width: 260px;
+  background: #f7f7f8;
+  border-right: 1px solid #e5e5e5;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding-bottom: 20px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.records-sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 16px 14px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #2b6cb0;
+  letter-spacing: .02em;
+}
+.records-sidebar-header img {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.records-sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  margin: 2px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: .9rem;
+  color: #444;
+  transition: background .15s, color .15s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  user-select: none;
+}
+.records-sidebar-item:hover { background: #eaeaec; }
+.records-sidebar-item:active { background: #dedee0; }
+
+/* 选中态 */
+#records-tab-0:checked ~ .records-sidebar label[for="records-tab-0"],
+#records-tab-1:checked ~ .records-sidebar label[for="records-tab-1"],
+#records-tab-2:checked ~ .records-sidebar label[for="records-tab-2"],
+#records-tab-3:checked ~ .records-sidebar label[for="records-tab-3"],
+#records-tab-4:checked ~ .records-sidebar label[for="records-tab-4"],
+#records-tab-5:checked ~ .records-sidebar label[for="records-tab-5"],
+#records-tab-6:checked ~ .records-sidebar label[for="records-tab-6"],
+#records-tab-7:checked ~ .records-sidebar label[for="records-tab-7"],
+#records-tab-8:checked ~ .records-sidebar label[for="records-tab-8"],
+#records-tab-9:checked ~ .records-sidebar label[for="records-tab-9"] {
+  background: #e3e3e5;
+  color: #222;
+  font-weight: 500;
+}
+
+/* ========================================
+   主内容区
+   ======================================== */
+.records-main {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  -webkit-overflow-scrolling: touch;
+}
+
+.records-conv {
+  display: none;
+  flex-direction: column;
+  flex: 1;
+}
+
+#records-tab-0:checked ~ .records-main #conv-0,
+#records-tab-1:checked ~ .records-main #conv-1,
+#records-tab-2:checked ~ .records-main #conv-2,
+#records-tab-3:checked ~ .records-main #conv-3,
+#records-tab-4:checked ~ .records-main #conv-4,
+#records-tab-5:checked ~ .records-main #conv-5,
+#records-tab-6:checked ~ .records-main #conv-6,
+#records-tab-7:checked ~ .records-main #conv-7,
+#records-tab-8:checked ~ .records-main #conv-8,
+#records-tab-9:checked ~ .records-main #conv-9 {
+  display: flex;
+}
+
+/* ---- 标题栏 ---- */
+.records-conv-header {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 14px 20px 10px;
+  border-bottom: 1px solid #eee;
+  flex-shrink: 0;
+  background: #fff;
+}
+.records-conv-title { font-size: 1.05rem; font-weight: 600; color: #222; }
+.records-conv-subtitle {
+  font-size: .78rem; color: #aaa;
+  display: flex; align-items: center; gap: 4px;
+}
+.records-subtitle-icon { font-size: .75rem; color: #f0a500; }
+.records-conv-time { font-size: .8rem; color: #aaa; margin-left: auto; }
+
+/* ---- 消息区 ---- */
+.records-conv-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 0;
+  width: 100%;
+}
+
+/* ---- 消息行 ---- */
+.records-msg {
+  display: flex;
+  align-items: flex-start;
+  padding: 8px 5% 8px 3%;
+  gap: 12px;
+}
+
+/* ---- AI 消息 ---- */
+.records-ai { justify-content: flex-start; }
+.records-ai .records-msg-avatar {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 2px;
+  object-fit: cover;
+}
+.records-ai .records-msg-bubble {
+  max-width: 85%;
+  background: transparent;
+  padding: 4px 0;
+}
+.records-ai .records-msg-bubble p {
+  color: #333;
+  margin: 0;
+  line-height: 1.72;
+  font-size: .93rem;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+.records-ai .records-msg-bubble p + p { margin-top: .85em; }
+
+/* ---- 用户消息 ---- */
+.records-user { justify-content: flex-end; }
+.records-user .records-msg-bubble {
+  max-width: 85%;
+  background: #eaf1fb;
+  border-radius: 14px 4px 14px 14px;
+  padding: 10px 16px;
+}
+.records-user .records-msg-bubble p {
+  color: #1a1a2e;
+  margin: 0;
+  line-height: 1.65;
+  font-size: .93rem;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+.records-user .records-msg-bubble p + p { margin-top: .6em; }
+
+/* ---- 动画 ---- */
+.records-msg { animation: msgIn .35s ease-out; }
+@keyframes msgIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.records-ai + .records-ai,
+.records-user + .records-user { padding-top: 2px; }
+.records-ai + .records-user,
+.records-user + .records-ai { padding-top: 24px; }
+
+/* ========================================
+   思考模式 —— 可折叠灰色区块
+   ======================================== */
+.records-thinking {
+  margin-bottom: 12px;
+}
+
+/* 去默认三角形 */
+.records-thinking summary::-webkit-details-marker { display: none; }
+.records-thinking summary::marker { display: none; content: ''; }
+.records-thinking summary { list-style: none; }
+
+.records-thinking summary {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  padding: 6px 0 4px;
+  font-size: .82rem;
+  color: #999;
+  user-select: none;
+  outline: none;
+  transition: color .2s;
+}
+.records-thinking summary:hover { color: #777; }
+
+.records-thinking-time {
+  color: #888;
+}
+
+/* 下拉箭头 */
+.records-thinking-arrow {
+  display: inline-block;
+  width: 14px; height: 14px;
+  position: relative;
+  margin-left: 2px;
+  transition: transform .25s;
+}
+.records-thinking-arrow::after {
+  content: '';
+  position: absolute;
+  top: 4px; left: 3px;
+  width: 6px; height: 6px;
+  border-right: 1.5px solid #bbb;
+  border-bottom: 1.5px solid #bbb;
+  transform: rotate(-45deg);
+}
+/* 展开时箭头向下 */
+.records-thinking[open] > summary > .records-thinking-arrow {
+  transform: rotate(90deg);
+}
+
+/* 思考内容 —— flex 两栏：gutter（点+线）+ 文本 */
+.records-thinking-content {
+  display: flex;
+  margin-top: 6px;
+  gap: 0;
+}
+
+/* 左侧固定栏：圆点 + 竖线 */
+.records-thinking-gutter {
+  width: 16px;
+  min-width: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.records-thinking-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #c0c0c0;
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+
+.records-thinking-line {
+  width: 2px;
+  background: #e0e0e0;
+  margin-top: 4px;
+  flex: 1;
+  min-height: 8px;
+}
+
+/* 右侧文本区 */
+.records-thinking-text {
+  flex: 1;
+  min-width: 0;
+  padding-right: 4px;
+}
+.records-thinking-text p {
+  font-size: .85rem !important;
+  color: #999 !important;
+  line-height: 1.65 !important;
+  margin: 0 !important;
+}
+.records-thinking-text p + p { margin-top: .6em !important; }
+
+/* ========================================
+   暗色模式
+   ======================================== */
+[data-theme="dark"] #records_page .page-top-card { opacity: .04; }
+
+[data-theme="dark"] .records-layout {
+  box-shadow: 0 4px 32px rgba(0, 0, 0, .3);
+}
+
+[data-theme="dark"] .records-sidebar {
+  background: #1a1a1e;
+  border-right-color: #2a2a2e;
+}
+[data-theme="dark"] .records-sidebar-header { color: #5b9bd5; }
+[data-theme="dark"] .records-sidebar-item { color: #bbb; }
+[data-theme="dark"] .records-sidebar-item:hover { background: #242428; }
+[data-theme="dark"] .records-sidebar-item:active { background: #2a2a2e; }
+
+[data-theme="dark"] #records-tab-0:checked ~ .records-sidebar label[for="records-tab-0"],
+[data-theme="dark"] #records-tab-1:checked ~ .records-sidebar label[for="records-tab-1"],
+[data-theme="dark"] #records-tab-2:checked ~ .records-sidebar label[for="records-tab-2"],
+[data-theme="dark"] #records-tab-3:checked ~ .records-sidebar label[for="records-tab-3"],
+[data-theme="dark"] #records-tab-4:checked ~ .records-sidebar label[for="records-tab-4"],
+[data-theme="dark"] #records-tab-5:checked ~ .records-sidebar label[for="records-tab-5"],
+[data-theme="dark"] #records-tab-6:checked ~ .records-sidebar label[for="records-tab-6"],
+[data-theme="dark"] #records-tab-7:checked ~ .records-sidebar label[for="records-tab-7"],
+[data-theme="dark"] #records-tab-8:checked ~ .records-sidebar label[for="records-tab-8"],
+[data-theme="dark"] #records-tab-9:checked ~ .records-sidebar label[for="records-tab-9"] {
+  background: #2a2a2e; color: #eee;
+}
+
+[data-theme="dark"] .records-main { background: #212327; }
+
+[data-theme="dark"] .records-conv-header {
+  background: #212327;
+  border-bottom-color: #2a2a2e;
+}
+[data-theme="dark"] .records-conv-title { color: #eee; }
+[data-theme="dark"] .records-conv-subtitle,
+[data-theme="dark"] .records-conv-time { color: #666; }
+[data-theme="dark"] .records-subtitle-icon { color: #e0a800; }
+
+[data-theme="dark"] .records-ai .records-msg-bubble p { color: #ddd; }
+[data-theme="dark"] .records-user .records-msg-bubble { background: #1e3a5f; }
+[data-theme="dark"] .records-user .records-msg-bubble p { color: #dce4f5; }
+
+[data-theme="dark"] .records-thinking-arrow::after { border-color: #666; }
+[data-theme="dark"] .records-thinking-dot { background: #555; }
+[data-theme="dark"] .records-thinking-line { background: #333; }
+[data-theme="dark"] .records-thinking-text p { color: #777 !important; }
+
+/* ========================================
+   响应式
+   ======================================== */
+@media screen and (max-width: 768px) {
+  .records-layout {
+    margin: 8px;
+    height: calc(100vh - 60px - 16px);
+    border-radius: 10px;
+  }
+  .records-sidebar {
+    width: 200px;
+    min-width: 200px;
+  }
+  .records-sidebar-item { padding: 8px 12px; font-size: .82rem; }
+  .records-conv-header { padding: 10px 14px 8px; }
+  .records-msg { padding: 6px 4% 6px 2%; gap: 8px; }
+  .records-user .records-msg-bubble { max-width: 88%; padding: 8px 12px; }
+  .records-ai .records-msg-avatar { width: 26px; height: 26px; }
+  .records-ai .records-msg-bubble p,
+  .records-user .records-msg-bubble p { font-size: .85rem; }
+}
+
+@media screen and (max-width: 540px) {
+  .records-layout { margin: 4px; height: calc(100vh - 60px - 8px); border-radius: 6px; }
+  .records-sidebar { width: 56px; min-width: 56px; }
+  .records-sidebar-header { justify-content: center; padding: 16px 0 12px; }
+  .records-sidebar-header span { display: none; }
+  .records-sidebar-text { display: none; }
+  .records-sidebar-item { justify-content: center; padding: 12px 0; margin: 2px 6px; }
+}

@@ -82,12 +82,10 @@
     width: 100%;
 }
 
-/* 瀑布流布局 */
+/* 瀑布流布局 - 使用CSS Columns实现真正瀑布流 */
 #bber ul.list {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
-    gap: 1.5%;
+    column-count: 3;
+    column-gap: 1.5%;
     padding: 0;
     margin: 0;
     list-style: none;
@@ -104,7 +102,8 @@
 /* ===== 短文卡片 ===== */
 #bber .timeline ul li.bber-item {
     position: relative;
-    width: 32%;
+    width: 100%;
+    break-inside: avoid;
     border: 1px solid #e3e8f7;
     border-radius: 12px;
     padding: 1rem 1rem 0.5rem;
@@ -334,14 +333,13 @@
 
 /* ===== 响应式 ===== */
 @media screen and (max-width: 1300px) {
-    #bber .timeline ul li.bber-item {
-        width: 49%;
+    #bber ul.list {
+        column-count: 2;
     }
 }
 @media screen and (max-width: 768px) {
-    #bber .timeline ul li.bber-item {
-        width: 100%;
-        margin-right: 0px;
+    #bber ul.list {
+        column-count: 1;
     }
 }
 

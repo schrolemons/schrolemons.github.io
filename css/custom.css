@@ -274,14 +274,22 @@ div#archive {
 
 
 
+/* ========================================
+   ToDoList —— 笔记本便签风格
+   ======================================== */
 #todolist-box{
-    margin: 0 10px;
+    margin: 0;
+    background: #f5efe0;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 12px rgba(120,90,50,.1);
 }
 #todolist-main{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: flex-start;
     margin: 16px 0 10px;
 }
 #todolist-main li{
@@ -300,83 +308,159 @@ div#archive {
     width: 50%;
     padding: 0 0 0 8px;
 }
-.todolist-item{
-    position: relative;
-    background: #fae4df;
-    border-radius: 12px;
-    padding: 10px 1rem 1.2rem;
-    border: 2px dashed #f7a796;
-    margin-bottom: 1rem;
-}
-[data-theme=dark]
-.todolist-item{
-    background: #242424;
-    border: 2px dashed #51908b;
-}
-li.todolist-li i{
-    margin-right: 8px;
-    font-size: 1rem;
-    color: #f7a796;
-}
-[data-theme=dark] li.todolist-li i{
-    color: #51908b;
-}
-h3.todolist-title{
-    margin: 0 0 0.5rem 0 !important;
-    padding-bottom: 0.4rem;
-    border-bottom: 2px solid #f7a796;
-    font-size: 1.2rem;
-    font-weight: bold;
-}
-[data-theme=dark] h3.todolist-title{
-    border-bottom-color: #51908b;
-}
-li.todolist-li{
-    padding: 4px 0;
-    font-weight: normal;
-    display: flex;
-    align-items: center;
-}
-.todolist-li span{
-    line-height: 1.5;
-}
 @media screen and (max-width:700px){
     #todolist-left,#todolist-right{
         width: 100%;
         padding: 0;
     }
 }
+/* ---- 笔记本封面头部 ---- */
 .page-top-card{
     background-size: cover;
     background-position: center;
-    height: 18rem;
-    padding: 2rem 2.7rem;
-    border-radius: 20px;
-    color: #f8b632;
+    height: 14rem;
+    padding: 0;
+    border-radius: 10px 10px 0 0;
+    color: #fff;
     display: flex;
-    flex-direction: column;
+    align-items: center;
     justify-content: center;
+    position: relative;
+    overflow: hidden;
 }
-.page-top-card .content-item-tips{
-    font-size: 1.3rem;
-    margin-bottom: 0.5rem;
+/* 深色叠加层 */
+.page-top-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(40,30,20,.55);
+    z-index: 1;
 }
+/* 标题文字容器 */
+.page-top-card-textbox {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 1.5rem 2rem;
+}
+/* ---- 标题 ---- */
 .page-top-card span.content-item-title{
-    font-size: 2.8rem;
-    font-weight: bold;
+    font-size: 2.6rem;
+    font-weight: 800;
     line-height: 1.2;
-    font-family: STZhongsong,'Microsoft YaHei';
-    margin-bottom: 1.5rem;
+    font-family: Georgia,'Noto Serif SC','STZhongsong','Microsoft YaHei',serif;
+    color: #f5e6c8;
+    letter-spacing: 0.06em;
+    display: block;
+    margin-bottom: 0.6rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,.3);
 }
+/* 上下装饰线 */
+.page-top-card-textbox::before,
+.page-top-card-textbox::after {
+    content: '';
+    display: block;
+    width: 60%;
+    height: 1px;
+    margin: 0 auto;
+    background: linear-gradient(to right, transparent, rgba(245,230,200,.6), transparent);
+}
+.page-top-card-textbox::before { margin-bottom: 1rem; }
+.page-top-card-textbox::after  { margin-top: 1rem; }
+/* ---- 副标题 ---- */
 .page-top-card .content-bottom{
-    font-size: 1rem;
+    font-size: 0.9rem;
+    color: rgba(245,230,200,.7);
+    letter-spacing: 0.1em;
 }
-[data-theme='dark'] .page-top-card{
-    opacity: .92;
+
+/* ---- 便签卡片 ---- */
+.todolist-item{
+    position: relative;
+    background: #fdfaf3;
+    border-radius: 8px;
+    padding: 14px 1rem 1.2rem;
+    border: 1px solid #e0d6c0;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 6px rgba(140,110,70,.08);
+    /* 横线纸效果 */
+    background-image:
+        repeating-linear-gradient(
+            #fdfaf3,
+            #fdfaf3 27px,
+            #e8e0cf 28px
+        );
+    background-position: 0 38px;
+}
+h3.todolist-title{
+    margin: 0 0 0.6rem 0 !important;
+    padding-bottom: 0.3rem;
+    border-bottom: 2px solid #d4c5a0;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #5a4a3a;
+    font-family: 'Noto Serif SC',Georgia,'Microsoft YaHei',serif;
+}
+li.todolist-li{
+    padding: 2px 0;
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    color: #4a3a2a;
+}
+li.todolist-li i{
+    margin-right: 8px;
+    font-size: 0.9rem;
+    color: #c4a882;
+}
+.todolist-li span{
+    line-height: 1.5;
 }
 
+/* ---- 暗色模式 ---- */
+[data-theme=dark] #todolist-box{
+    background: #1e1e1e;
+    box-shadow: 0 2px 12px rgba(0,0,0,.3);
+}
+[data-theme=dark] .page-top-card::after {
+    background: rgba(20,15,10,.65);
+}
+[data-theme=dark] .page-top-card span.content-item-title{
+    color: #d4c5a0;
+    text-shadow: 0 2px 4px rgba(0,0,0,.5);
+}
+[data-theme=dark] .page-top-card .content-bottom{
+    color: rgba(212,197,160,.6);
+}
+[data-theme=dark] .todolist-item{
+    background: #252525;
+    border-color: rgba(255,255,255,.08);
+    box-shadow: 0 2px 6px rgba(0,0,0,.2);
+    background-image:
+        repeating-linear-gradient(
+            #252525,
+            #252525 27px,
+            #333 28px
+        );
+    background-position: 0 38px;
+}
+[data-theme=dark] h3.todolist-title{
+    color: #c4b896;
+    border-bottom-color: rgba(255,255,255,.1);
+}
+[data-theme=dark] li.todolist-li{
+    color: #bbb;
+}
+[data-theme=dark] li.todolist-li i{
+    color: #7a9a96;
+}
 
-
+/* ---- 响应式 ---- */
+@media screen and (max-width: 768px) {
+    #todolist-box { padding: 12px; }
+    .page-top-card { height: 12rem; }
+    .page-top-card span.content-item-title{ font-size: 1.8rem; }
+}
 /* 帧率检测 */
 #fps {
     position: fixed;
