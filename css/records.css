@@ -142,7 +142,7 @@
 /* ---- 标题栏（sticky 固定）---- */
 .records-conv-header {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 10px;
   padding: 14px 20px 10px;
   border-bottom: 1px solid #eee;
@@ -537,15 +537,13 @@
     transform: translateX(0);
   }
 
-  /* ---- 侧栏 header 保留文字，隐藏小头像 ---- */
+  /* ---- 侧栏 header ---- */
   .records-sidebar-header {
     justify-content: flex-start;
     padding: 16px 14px 12px;
     font-size: 1rem;
   }
-  .records-sidebar-header img {
-    display: none;
-  }
+  .records-sidebar-header img { display: none; }
 
   /* ---- 侧栏列表项回正常宽 ---- */
   .records-sidebar-item {
@@ -558,17 +556,14 @@
   .records-sidebar-text { display: block; }
 
   /* ---- 主内容区 ---- */
-  .records-conv-header { padding: 10px 14px 8px; }
+  .records-conv-header { padding: 10px 16px 8px; }
   .records-conv-subtitle { font-size: .72rem; }
-  .records-msg { padding: 8px 6% 8px 5%; gap: 8px; }
-  .records-user .records-msg-bubble { max-width: 82%; border-radius: 12px 4px 12px 12px; padding: 8px 12px; }
+  .records-msg { padding: 10px 7% 10px 6%; gap: 8px; }
+  .records-user .records-msg-bubble { max-width: 80%; border-radius: 12px 4px 12px 12px; padding: 8px 12px; }
   .records-ai .records-msg-bubble p,
   .records-user .records-msg-bubble p { font-size: .85rem; line-height: 1.55; }
 
-  /* ---- 隐藏 AI 头像 ---- */
-  .records-ai .records-msg-avatar {
-    display: none;
-  }
+  .records-ai .records-msg-avatar { display: none; }
 
   .records-thinking summary { font-size: .76rem; }
   .records-thinking-text p { font-size: .78rem !important; }
@@ -603,15 +598,15 @@
   .records-sidebar-text { display: block; }
 
   .records-conv-header {
-    padding: 10px 12px 6px;
+    padding: 10px 14px 8px;
     gap: 6px;
   }
   .records-conv-title { font-size: .9rem; }
   .records-conv-time { font-size: .7rem; }
   .records-conv-subtitle { font-size: .7rem; }
 
-  .records-msg { padding: 10px 7% 10px 6%; gap: 6px; }
-  .records-user .records-msg-bubble { max-width: 80%; padding: 8px 10px; border-radius: 10px 3px 10px 10px; }
+  .records-msg { padding: 12px 8% 12px 7%; gap: 6px; }
+  .records-user .records-msg-bubble { max-width: 78%; padding: 8px 10px; border-radius: 10px 3px 10px 10px; }
   .records-ai .records-msg-avatar { display: none; }
   .records-ai .records-msg-bubble p,
   .records-user .records-msg-bubble p { font-size: .82rem; line-height: 1.5; }
@@ -643,13 +638,13 @@
   }
   .records-hamburger-icon { width: 13px; }
 
-  .records-conv-header { padding: 8px 10px 4px; }
+  .records-conv-header { padding: 8px 12px 6px; }
   .records-conv-title { font-size: .85rem; }
   .records-conv-time { font-size: .66rem; }
 
   .records-conv-messages { padding: 12px 0 30px; }
-  .records-msg { padding: 6px 8% 6px 7%; gap: 4px; }
-  .records-user .records-msg-bubble { max-width: 84%; padding: 6px 8px; border-radius: 8px 3px 8px 8px; }
+  .records-msg { padding: 8px 9% 8px 8%; gap: 4px; }
+  .records-user .records-msg-bubble { max-width: 82%; padding: 6px 8px; border-radius: 8px 3px 8px 8px; }
   .records-ai .records-msg-avatar { display: none; }
   .records-ai .records-msg-bubble p,
   .records-user .records-msg-bubble p { font-size: .8rem; line-height: 1.48; }
