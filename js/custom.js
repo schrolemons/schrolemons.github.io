@@ -43,7 +43,16 @@ function replaceAll(e, n, t) {
 var anzhiyu = {
     diffDate: function (d, more = false) {
         const dateNow = new Date();
-        const datePost = new Date(d);
+        // 兼容各种日期格式：Date对象、ISO字符串、"YYYY-MM-DD"等
+        let datePost;
+        if (d instanceof Date) {
+            datePost = d;
+        } else if (typeof d === 'string') {
+            // 将 "YYYY-MM-DD" 转为 "YYYY/MM/DD" 避免Safari/时区解析问题
+            datePost = new Date(d.replace(/-/g, '/'));
+        } else {
+            datePost = new Date(d);
+        }
         const dateDiff = dateNow.getTime() - datePost.getTime();
         const minute = 1000 * 60;
         const hour = minute * 60;
@@ -57,8 +66,11 @@ var anzhiyu = {
             const hourCount = dateDiff / hour;
             const minuteCount = dateDiff / minute;
 
-            if (monthCount >= 1) {
+            if (monthCount >= 12) {
+                // 超过一年显示完整日期
                 result = datePost.toLocaleDateString().replace(/\//g, "-");
+            } else if (monthCount >= 1) {
+                result = parseInt(monthCount) + " 个月前";
             } else if (dayCount >= 1) {
                 result = parseInt(dayCount) + " " + GLOBAL_CONFIG.date_suffix.day;
             } else if (hourCount >= 1) {
