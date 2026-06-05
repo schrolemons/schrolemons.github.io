@@ -195,6 +195,30 @@
 }
 .records-ai .records-msg-bubble p + p { margin-top: .85em; }
 
+/* ---- 粗体 & 列表项（📝 YAML 中 **text** 和 >text 语法）---- */
+.records-ai .records-msg-bubble strong,
+.records-user .records-msg-bubble strong,
+.records-thinking-text strong {
+  font-weight: 600;
+  color: inherit;
+}
+.records-list-item {
+  position: relative;
+  padding-left: 1.2em !important;
+  margin: 0 !important;
+}
+.records-list-item::before {
+  content: '';
+  position: absolute;
+  left: 0; top: .58em;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #c0c0c0;
+}
+.records-ai .records-msg-bubble .records-list-item { color: #555; }
+.records-user .records-msg-bubble .records-list-item { color: #2a3a5e; }
+.records-thinking-text .records-list-item::before { background: #bbb; }
+
 /* ---- 用户消息 ---- */
 .records-user { justify-content: flex-end; }
 .records-user .records-msg-bubble {
@@ -367,41 +391,164 @@
 [data-theme="dark"] .records-subtitle-icon { color: #e0a800; }
 
 [data-theme="dark"] .records-ai .records-msg-bubble p { color: #ddd; }
+[data-theme="dark"] .records-ai .records-msg-bubble .records-list-item { color: #aaa; }
 [data-theme="dark"] .records-user .records-msg-bubble { background: #1e3a5f; }
 [data-theme="dark"] .records-user .records-msg-bubble p { color: #dce4f5; }
 
 [data-theme="dark"] .records-thinking-arrow::after { border-color: #666; }
 [data-theme="dark"] .records-thinking-dot { background: #555; }
 [data-theme="dark"] .records-thinking-line { background: #333; }
+[data-theme="dark"] .records-user .records-msg-bubble .records-list-item { color: #aab8d4; }
+[data-theme="dark"] .records-list-item::before { background: #555; }
 [data-theme="dark"] .records-thinking-text p { color: #777 !important; }
 
 /* ========================================
    响应式
    ======================================== */
-@media screen and (max-width: 768px) {
+
+/* ---- 平板 / 小屏桌面 ---- */
+@media screen and (max-width: 900px) {
   .records-layout {
-    margin: 8px;
-    height: calc(100vh - 60px - 16px);
-    border-radius: 10px;
+    margin: 10px;
+    height: calc(100vh - 60px - 20px);
   }
   .records-sidebar {
     width: 200px;
     min-width: 200px;
   }
-  .records-sidebar-item { padding: 8px 12px; font-size: .82rem; }
-  .records-conv-header { padding: 10px 14px 8px; }
-  .records-msg { padding: 6px 4% 6px 2%; gap: 8px; }
-  .records-user .records-msg-bubble { max-width: 88%; padding: 8px 12px; }
-  .records-ai .records-msg-avatar { width: 26px; height: 26px; }
-  .records-ai .records-msg-bubble p,
-  .records-user .records-msg-bubble p { font-size: .85rem; }
 }
 
-@media screen and (max-width: 540px) {
-  .records-layout { margin: 4px; height: calc(100vh - 60px - 8px); border-radius: 6px; }
-  .records-sidebar { width: 56px; min-width: 56px; }
-  .records-sidebar-header { justify-content: center; padding: 16px 0 12px; }
+/* ---- iPad / 竖屏平板 ---- */
+@media screen and (max-width: 768px) {
+  .records-layout {
+    margin: 0;
+    height: calc(100vh - 60px);
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .records-sidebar {
+    width: 170px;
+    min-width: 170px;
+  }
+  .records-sidebar-header { padding: 16px 12px 10px; font-size: .9rem; }
+  .records-sidebar-header img { width: 24px; height: 24px; }
+  .records-sidebar-item { padding: 8px 12px; font-size: .82rem; margin: 1px 4px; }
+
+  .records-conv-header {
+    padding: 10px 14px 8px;
+    flex-wrap: wrap;
+    gap: 4px 8px;
+  }
+  .records-conv-title { font-size: .95rem; }
+  .records-conv-time { font-size: .72rem; }
+
+  .records-msg { padding: 6px 3% 6px 2%; gap: 8px; }
+  .records-user .records-msg-bubble { max-width: 90%; padding: 8px 12px; }
+  .records-ai .records-msg-avatar { width: 26px; height: 26px; margin-top: 0; }
+  .records-ai .records-msg-bubble p,
+  .records-user .records-msg-bubble p { font-size: .87rem; line-height: 1.6; }
+  .records-ai .records-msg-bubble p + p { margin-top: .65em; }
+  .records-user .records-msg-bubble p + p { margin-top: .45em; }
+
+  .records-thinking-gutter { width: 14px; min-width: 14px; }
+}
+
+/* ---- 手机横屏 / 大屏手机 ---- */
+@media screen and (max-width: 600px) {
+  .records-sidebar {
+    width: 140px;
+    min-width: 140px;
+  }
+  .records-sidebar-header img { width: 22px; height: 22px; }
+  .records-sidebar-item {
+    font-size: .78rem;
+    padding: 9px 10px;
+    border-radius: 6px;
+  }
+
+  .records-conv-header { padding: 10px 12px 6px; }
+  .records-conv-subtitle { font-size: .72rem; display: none; }
+
+  .records-conv-messages { padding: 14px 0; }
+  .records-msg { padding: 6px 2% 6px 1%; gap: 6px; }
+  .records-user .records-msg-bubble { max-width: 93%; border-radius: 12px 4px 12px 12px; padding: 7px 10px; }
+  .records-ai .records-msg-avatar { width: 24px; height: 24px; }
+  .records-ai .records-msg-bubble p,
+  .records-user .records-msg-bubble p { font-size: .85rem; line-height: 1.55; }
+
+  .records-thinking summary { font-size: .76rem; }
+  .records-thinking-text p { font-size: .78rem !important; }
+}
+
+/* ---- 手机竖屏（侧栏折叠为图标条）---- */
+@media screen and (max-width: 480px) {
+  .records-layout { margin: 0; height: 100dvh; border-radius: 0; }
+
+  .records-sidebar {
+    width: 48px;
+    min-width: 48px;
+  }
+  .records-sidebar-header {
+    justify-content: center;
+    padding: 14px 0 10px;
+  }
+  .records-sidebar-header img { width: 26px; height: 26px; }
   .records-sidebar-header span { display: none; }
+  .records-sidebar-item {
+    justify-content: center;
+    padding: 11px 0;
+    margin: 1px 6px;
+    border-radius: 6px;
+  }
   .records-sidebar-text { display: none; }
-  .records-sidebar-item { justify-content: center; padding: 12px 0; margin: 2px 6px; }
+
+  .records-conv-header {
+    padding: 10px 12px 6px;
+    gap: 2px 6px;
+  }
+  .records-conv-title { font-size: .9rem; }
+  .records-conv-time { font-size: .7rem; }
+  .records-conv-subtitle { font-size: .7rem; }
+
+  .records-msg { padding: 5px 1% 5px 0.5%; gap: 6px; }
+  .records-user .records-msg-bubble { max-width: 94%; padding: 6px 10px; border-radius: 10px 3px 10px 10px; }
+  .records-ai .records-msg-avatar { width: 22px; height: 22px; }
+  .records-ai .records-msg-bubble p,
+  .records-user .records-msg-bubble p { font-size: .82rem; line-height: 1.5; }
+
+  .records-ai + .records-user,
+  .records-user + .records-ai { padding-top: 18px; }
+
+  .records-thinking summary { font-size: .74rem; }
+  .records-thinking-text p { font-size: .76rem !important; }
+  .records-thinking-gutter { width: 12px; min-width: 12px; }
+  .records-thinking-dot { width: 5px; height: 5px; }
+  .records-thinking-line { width: 1.5px; }
+}
+
+/* ---- 超小屏手机 ---- */
+@media screen and (max-width: 360px) {
+  .records-sidebar {
+    width: 42px;
+    min-width: 42px;
+  }
+  .records-sidebar-header img { width: 22px; height: 22px; }
+  .records-sidebar-item { padding: 10px 0; margin: 1px 4px; }
+
+  .records-conv-header { padding: 8px 10px 4px; }
+  .records-conv-title { font-size: .85rem; }
+  .records-conv-time { font-size: .66rem; }
+
+  .records-conv-messages { padding: 10px 0; }
+  .records-msg { padding: 4px 1% 4px 0; gap: 4px; }
+  .records-user .records-msg-bubble { max-width: 96%; padding: 5px 8px; border-radius: 8px 3px 8px 8px; }
+  .records-ai .records-msg-avatar { width: 20px; height: 20px; }
+  .records-ai .records-msg-bubble p,
+  .records-user .records-msg-bubble p { font-size: .8rem; line-height: 1.48; }
+  .records-ai .records-msg-bubble p + p { margin-top: .5em; }
+  .records-user .records-msg-bubble p + p { margin-top: .3em; }
+
+  .records-thinking summary { font-size: .72rem; }
+  .records-thinking-text p { font-size: .74rem !important; }
+  .records-thinking-gutter { width: 10px; min-width: 10px; }
 }
