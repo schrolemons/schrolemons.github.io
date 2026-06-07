@@ -44,15 +44,36 @@
 
 /* ---- 左侧栏 ---- */
 .records-sidebar {
+  position: relative;
   width: 260px;
   min-width: 260px;
   background: #f7f7f8;
   border-right: 1px solid #e5e5e5;
   display: flex;
   flex-direction: column;
+}
+/* 底部渐变遮罩：暗示下方还有更多话题 */
+.records-sidebar::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 48px;
+  background: linear-gradient(to bottom, transparent, #f7f7f8);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.records-sidebar-list {
+  flex: 1;
   overflow-y: auto;
+  min-height: 0;
   padding-bottom: 20px;
   -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;          /* Firefox */
+  -ms-overflow-style: none;       /* IE/Edge */
+}
+.records-sidebar-list::-webkit-scrollbar {
+  display: none;                  /* Chrome/Safari */
 }
 
 .records-sidebar-header {
@@ -100,7 +121,12 @@
 #records-tab-6:checked ~ .records-sidebar label[for="records-tab-6"],
 #records-tab-7:checked ~ .records-sidebar label[for="records-tab-7"],
 #records-tab-8:checked ~ .records-sidebar label[for="records-tab-8"],
-#records-tab-9:checked ~ .records-sidebar label[for="records-tab-9"] {
+#records-tab-9:checked ~ .records-sidebar label[for="records-tab-9"],
+#records-tab-10:checked ~ .records-sidebar label[for="records-tab-10"],
+#records-tab-11:checked ~ .records-sidebar label[for="records-tab-11"],
+#records-tab-12:checked ~ .records-sidebar label[for="records-tab-12"],
+#records-tab-13:checked ~ .records-sidebar label[for="records-tab-13"],
+#records-tab-14:checked ~ .records-sidebar label[for="records-tab-14"] {
   background: #e3e3e5;
   color: #222;
   font-weight: 500;
@@ -135,7 +161,12 @@
 #records-tab-6:checked ~ .records-main #conv-6,
 #records-tab-7:checked ~ .records-main #conv-7,
 #records-tab-8:checked ~ .records-main #conv-8,
-#records-tab-9:checked ~ .records-main #conv-9 {
+#records-tab-9:checked ~ .records-main #conv-9,
+#records-tab-10:checked ~ .records-main #conv-10,
+#records-tab-11:checked ~ .records-main #conv-11,
+#records-tab-12:checked ~ .records-main #conv-12,
+#records-tab-13:checked ~ .records-main #conv-13,
+#records-tab-14:checked ~ .records-main #conv-14 {
   display: flex;
 }
 
@@ -364,6 +395,9 @@
   background: #1a1a1e;
   border-right-color: #2a2a2e;
 }
+[data-theme="dark"] .records-sidebar::after {
+  background: linear-gradient(to bottom, transparent, #1a1a1e);
+}
 [data-theme="dark"] .records-sidebar-header { color: #5b9bd5; }
 [data-theme="dark"] .records-sidebar-item { color: #bbb; }
 [data-theme="dark"] .records-sidebar-item:hover { background: #242428; }
@@ -378,7 +412,12 @@
 [data-theme="dark"] #records-tab-6:checked ~ .records-sidebar label[for="records-tab-6"],
 [data-theme="dark"] #records-tab-7:checked ~ .records-sidebar label[for="records-tab-7"],
 [data-theme="dark"] #records-tab-8:checked ~ .records-sidebar label[for="records-tab-8"],
-[data-theme="dark"] #records-tab-9:checked ~ .records-sidebar label[for="records-tab-9"] {
+[data-theme="dark"] #records-tab-9:checked ~ .records-sidebar label[for="records-tab-9"],
+[data-theme="dark"] #records-tab-10:checked ~ .records-sidebar label[for="records-tab-10"],
+[data-theme="dark"] #records-tab-11:checked ~ .records-sidebar label[for="records-tab-11"],
+[data-theme="dark"] #records-tab-12:checked ~ .records-sidebar label[for="records-tab-12"],
+[data-theme="dark"] #records-tab-13:checked ~ .records-sidebar label[for="records-tab-13"],
+[data-theme="dark"] #records-tab-14:checked ~ .records-sidebar label[for="records-tab-14"] {
   background: #2a2a2e; color: #eee;
 }
 
@@ -480,13 +519,18 @@
     display: flex;
     width: 26px; height: 26px;
     gap: 4px;
+    transition: background .2s, transform .2s;
   }
+  .records-hamburger-btn:hover { background: rgba(0, 0, 0, .05); }
+  .records-hamburger-btn:active { background: rgba(0, 0, 0, .1); transform: scale(.92); }
   .records-hamburger-icon {
     display: block;
     width: 16px; height: 2px;
     background: #555;
     border-radius: 1px;
-    transition: transform .25s ease, opacity .25s ease;
+    transform-origin: center;
+    will-change: transform, opacity;
+    transition: transform .35s cubic-bezier(.34, 1.56, .64, 1), opacity .2s ease;
   }
   /* 点击时三条线变形为 X */
   #records-hamburger:checked ~ .records-layout .records-hamburger-btn .records-hamburger-icon:nth-child(1) {
@@ -501,20 +545,20 @@
 
   /* ---- 遮罩 ---- */
   .records-overlay {
-    display: none;
+    display: block;
+    visibility: hidden;
+    opacity: 0;
     position: fixed;
     inset: 0;
     z-index: 90;
     background: rgba(0, 0, 0, .35);
-    animation: recordsFadeIn .25s ease;
+    pointer-events: none;
+    transition: opacity .35s cubic-bezier(.4, 0, .2, 1), visibility .35s;
   }
   #records-hamburger:checked ~ .records-overlay {
-    display: block;
-  }
-
-  @keyframes recordsFadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
   }
 
   /* ---- 侧栏变抽屉 ---- */
@@ -529,7 +573,8 @@
     min-width: 260px !important;
     z-index: 100;
     transform: translateX(-100%);
-    transition: transform .3s cubic-bezier(.4, 0, .2, 1);
+    will-change: transform;
+    transition: transform .35s cubic-bezier(.4, 0, .2, 1);
     box-shadow: 0 0 24px rgba(0, 0, 0, .15);
     border-right: 1px solid #e5e5e5;
   }
@@ -578,6 +623,13 @@
     gap: 3px;
   }
   .records-hamburger-icon { width: 14px; }
+  /* X 形变偏移适配 gap=3px */
+  #records-hamburger:checked ~ .records-layout .records-hamburger-btn .records-hamburger-icon:nth-child(1) {
+    transform: translateY(5px) rotate(45deg);
+  }
+  #records-hamburger:checked ~ .records-layout .records-hamburger-btn .records-hamburger-icon:nth-child(3) {
+    transform: translateY(-5px) rotate(-45deg);
+  }
 
   /* 侧栏高度撑满 */
   .records-sidebar {
@@ -637,6 +689,13 @@
     gap: 3px;
   }
   .records-hamburger-icon { width: 13px; }
+  /* X 形变偏移适配 gap=3px */
+  #records-hamburger:checked ~ .records-layout .records-hamburger-btn .records-hamburger-icon:nth-child(1) {
+    transform: translateY(5px) rotate(45deg);
+  }
+  #records-hamburger:checked ~ .records-layout .records-hamburger-btn .records-hamburger-icon:nth-child(3) {
+    transform: translateY(-5px) rotate(-45deg);
+  }
 
   .records-conv-header { padding: 8px 12px 6px; }
   .records-conv-title { font-size: .85rem; }
