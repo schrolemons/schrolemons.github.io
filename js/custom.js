@@ -202,7 +202,11 @@ function switchPostChart () {
 }
 
 $(document).ready(function () {
-    document.getElementById("mode-button").addEventListener("click", function () { setTimeout(switchPostChart, 100) })
+    const modeButton = document.getElementById("mode-button")
+    if (modeButton && !modeButton.dataset.customChartBound) {
+        modeButton.dataset.customChartBound = 'true'
+        modeButton.addEventListener("click", function () { setTimeout(switchPostChart, 100) })
+    }
 });
 
 // 发现有时会和当前页面重复，加一个判断
@@ -231,12 +235,17 @@ function darkmod(){
     });
 }
 
-document.getElementById('go-down') && document.getElementById('go-down').addEventListener('click', function () {
-    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-});
+var goDownButton = document.getElementById('go-down');
+if (goDownButton && !goDownButton.dataset.customScrollBound) {
+    goDownButton.dataset.customScrollBound = 'true';
+    goDownButton.addEventListener('click', function () {
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    });
+}
 
 var rightsideToggle = document.getElementById('rightside-toggle');
-if (rightsideToggle) {
+if (rightsideToggle && !rightsideToggle.dataset.customToggleBound) {
+    rightsideToggle.dataset.customToggleBound = 'true';
     rightsideToggle.addEventListener('click', function () {
         document.getElementById('rightside').classList.toggle('open');
     });
@@ -254,6 +263,4 @@ function lightmod(){
         timer: 1500
     });
 }
-
-
 
