@@ -1,3 +1,4 @@
+https://blog.sch-nie.com/posts/undefined.html
 https://blog.sch-nie.com/posts/null.html
 https://blog.sch-nie.com/posts/e5f6a7b8.html
 https://blog.sch-nie.com/posts/d4e5f6a7.html
@@ -7,4 +8,3 @@ https://blog.sch-nie.com/posts/a1b2c3d4.html
 https://blog.sch-nie.com/posts/1a2b3c4d.html
 https://blog.sch-nie.com/posts/8a72c1d3.html
 https://blog.sch-nie.com/posts/cppalgo.html
-https://blog.sch-nie.com/posts/58541536.html
