@@ -1,0 +1,102 @@
+- class_name: 即刻短文
+  essay_list:
+    # ===== 基础格式：仅文字 + 日期 =====
+    - content: 初步部署好了，除了时间格式.
+      date: 2024-09-02
+      link: https://blog.sch-nie.com/
+
+    - content: 不知道说什么好
+      date: 2024-09-02
+      from: xuedingeningmeng
+
+    # ===== 带图片 =====
+    - content: woc网站玩崩了，修了好久，只得从原版中复制多个文件回来....只得与bug共存
+      date: 2024-09-03
+      image:
+        - https://picbed.sch-nie.com/img/ground2 (1).jpg
+
+    - content: 加入了推荐的游戏！快来看看！
+      date: 2024-09-04
+
+    - content: 加入了好句！虽然没句！
+      date: 2024-09-05
+
+    - content: 加入了自定义右键！！win！
+      date: 2024-09-07
+
+    # ===== 带图片（多张） =====
+    - content: 今天拍了几张好看的照片，分享给大家看看~
+      date: 2024-09-10
+      image:
+        - https://picbed.sch-nie.com/img/ground2 (1).jpg
+        - https://picbed.sch-nie.com/img/ground2 (3).jpg
+
+    - content: 加入了聊天界面！！厉害！
+      date: 2024-09-24
+
+    - content: 加入了评论，要登录，且每条评论要经过审核
+      date: 2024-09-25
+
+    - content: 计算机安全期末考试，祝好运
+      date: 2024-11-15
+
+    # ===== 带来源 =====
+    - content: 修复了右键生效的问题、随笔失效的问题、todolist失效的问题、404页面失效的问题、文章波浪失效的问题、个人介绍失效的问题。。以后不乱整理主题了
+      date: 2025-01-21
+
+    - content: 实现了虚拟世界观、真实世界观的分离
+      date: 2025-02-21
+
+    - content: 再次回到这里，感慨万千。不知从何处落笔...
+      date: 2025-08-11
+
+    # ===== 带链接 =====
+    - content: 新文章发布了！《HEXO万能魔改：弹窗、昼夜切换函数》
+      date: 2025-09-01
+      link: https://blog.sch-nie.com/posts/2025a.html
+
+    # ===== 组合使用：链接 + 来源 + 图片 =====
+    - content: 博客加入了音乐播放器，可以在文章页听歌了~
+      date: 2025-09-15
+      link: https://blog.sch-nie.com/
+      from: APlayer
+      image:
+        - https://picbed.sch-nie.com/img/ground2 (5).jpg
+        - https://picbed.sch-nie.com/img/ground2 (6).jpg
+
+    # ===== 纯分享心情 =====
+    - content: 今天阳光很好，适合出去走走。路边的花开了，春天的气息越来越浓了🌿
+      date: 2026-03-15
+
+    - content: 最近在学React，感觉比Vue自由很多，但也更容易写出烂代码...
+      date: 2026-04-02
+
+    # ===== 带音乐 (aplayer) =====
+    - content: 推荐一首最近循环的歌，写代码的时候听特别有感觉
+      date: 2026-04-10
+      aplayer:
+        server: netease
+        id: "1901371647"
+
+    - content: 深夜写代码，来点氛围音乐
+      date: 2026-05-01
+      image:
+        - https://picbed.sch-nie.com/img/ground2 (8).jpg
+
+    # ===== 链接 + 来源 =====
+    - content: GitHub上发现一个超棒的项目，推荐给大家
+      date: 2026-05-20
+      link: https://github.com/
+      from: GitHub
+
+    # ===== 最新短文（靠近今天，会显示"X天前"） =====
+    - content: 博客终于修复了短文页面！现在好看多了，还加了时间显示🎉
+      date: 2026-06-03
+      link: https://blog.sch-nie.com/essay/
+      from: SCHNIE:BLOG
+
+    - content: 今天正式启用2026年短文功能，一切都正常工作了~
+      date: 2026-06-04
+
+    - content: 准备做一个小项目，用学到的React知识搭个个人Dashboard
+      date: 2026-06-05

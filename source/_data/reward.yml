@@ -1,0 +1,5 @@
+- class_name: 赞赏
+  reward_list:
+    - name: 黄猫
+      amount: 9999
+      datatime: 2025-1-21

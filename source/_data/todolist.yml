@@ -1,0 +1,106 @@
+- class_name: 学习技能
+  seat: left
+  todo_list:
+    - content: 深度学习/机器学习
+      completed: false
+    - content: 价值规律
+      completed: false
+    - content: 英语口语
+      completed: false
+    - content: 高等数学
+      completed: false
+    - content: 粒子物理
+      completed: false
+    - content: 博弈论/拓扑学
+      completed: false
+    - content: 制作网站（非模板式）
+      completed: false
+    - content: 完善博客
+      completed: true
+    - content: github/endnote用法
+      completed: false
+    - content: 传统阅读
+      completed: false
+    - content: 脚本/动画/3D建模/2D绘画/电子音乐
+      completed: false
+- class_name: 待发文章
+  seat: left
+  todo_list:
+    - content: 滞洄之水：云末王冕
+      completed: false
+    - content: 御临之木：借以神名
+      completed: false
+    - content: 跨世之雷：执笔绘逢
+      completed: false
+- class_name: 生活记录
+  seat: right
+  todo_list:
+    - content: 整理算法模板
+      completed: true
+    - content: 音乐会
+      completed: false
+    - content: 猫咖
+      completed: false
+- class_name: 想做的事情
+  seat: right
+  todo_list:
+    - content: codeforces 1900+
+      completed: false
+    - content: 非混科研（虽然混的从未参加过）
+      completed: false
+    - content: 找到furry社圈
+      completed: false
+- class_name: 美食
+  seat: left
+  todo_list:
+    - content: 找到一杯百喝不腻的奶茶
+      completed: false
+    - content: 找到在JLDX能活过一年的午餐
+      completed: false
+    - content: 找到味道不奇怪的小蛋糕
+      completed: false
+    - content: 找到不会让我肚子疼的牛奶:telunsu
+      completed: true
+    - content: 找到认可的冰棒品牌
+      completed: false
+
+- class_name: 宣传
+  seat: right
+  todo_list:
+    - content: 个人博客
+      completed: true
+    - content: 微信公众号
+      completed: true
+    - content: QQ群/QQ发布号
+      completed: true
+    - content: 官网
+      completed: true
+    - content: 文化企业
+      completed: false
+
+- class_name: 社交
+  seat: right
+  todo_list:
+    - content: 学业内题目能100%做对的
+      completed: false
+    - content: 科研项目几天一个的
+      completed: false
+    - content: 能通过第九边缘测试题的
+      completed: true
+    - content: 新学期愿意做第九边缘测试题的
+      completed: false
+    - content: 想了解第九边缘的
+      completed: false
+    - content: 网络冲浪高手
+      completed: false
+    - content: 符合第九理性的
+      completed: false
+    - content: ACM高手
+      completed: true
+    - content: 绘制furry高手
+      completed: true
+    - content: 写作/阅读高手
+      completed: false
+    - content: 计算机天才
+      completed: false
+

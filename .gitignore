@@ -1,0 +1,12 @@
+# Hexo generated output and local deployment worktree
+public/
+.deploy_git/
+
+# Local dependencies and caches
+node_modules/
+db.json
+.idea/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db

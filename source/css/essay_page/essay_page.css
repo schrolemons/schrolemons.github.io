@@ -1,0 +1,381 @@
+/* ===== 即刻短文页面样式 ===== */
+
+/* 移除页面容器默认样式 */
+#page:has(#essay_page) {
+    border: 0;
+    box-shadow: none !important;
+    padding: 0 !important;
+    background: transparent !important;
+}
+#page:has(#essay_page) .page-title {
+    display: none;
+}
+
+/* ===== 顶部横幅 ===== */
+.author-content-item .card-content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 2rem;
+}
+.author-content-item .author-content-item-tips {
+    font-size: 1rem;
+    opacity: 0.8;
+    margin-bottom: 0.3rem;
+}
+.author-content-item .author-content-item-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+}
+.author-content-item .content-bottom .tips {
+    font-size: 1rem;
+    opacity: 0.85;
+}
+.author-content-item .card-content .banner-button-group {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 2rem;
+    display: flex;
+    gap: 0.5rem;
+}
+.author-content-item .card-content .banner-button-group .banner-button {
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.5);
+    color: #fff;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+.author-content-item .card-content .banner-button-group .banner-button:hover {
+    background: rgba(255,255,255,0.35);
+    color: #fff;
+}
+
+.author-content.author-content-item.essayPage {
+    height: 19rem;
+    background: url(https://picbed.sch-nie.com/SCHNIE/横幅.png) left 28% / cover no-repeat;
+    overflow: hidden;
+    margin-top: 0px;
+    border-radius: 20px;
+}
+#page:has(#essay_page) .author-content-item .card-content .banner-button-group .banner-button:hover {
+    color: #fff;
+    border-radius: 20px !important;
+}
+
+/* ===== 短文列表容器 ===== */
+#bber {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+/* 瀑布流布局 - 使用CSS Columns实现真正瀑布流 */
+#bber ul.list {
+    column-count: 3;
+    column-gap: 1.5%;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+#bber .timeline #waterfall {
+    opacity: 1;
+    transition: all 0.3s ease 0s;
+}
+#bber .timeline #waterfall.show {
+    opacity: 1;
+}
+
+/* ===== 短文卡片 ===== */
+#bber .timeline ul li.bber-item {
+    position: relative;
+    width: 100%;
+    break-inside: avoid;
+    border: 1px solid #e3e8f7;
+    border-radius: 12px;
+    padding: 1rem 1rem 0.5rem;
+    transition: all 0.3s ease 0s;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    background: #fff;
+    box-shadow: 0 8px 16px -4px rgba(44,45,48,0.047);
+    margin-bottom: 1rem;
+}
+
+#bber .timeline ul li.bber-item:hover {
+    border-color: #49b1f5;
+    box-shadow: 0 8px 16px -4px rgba(73,177,245,0.2);
+}
+
+/* ===== 短文内容 ===== */
+#bber div.bber-content {
+    display: flex;
+    flex-flow: wrap;
+    border-radius: 12px;
+    width: 100%;
+    height: 100%;
+}
+
+#bber .bber-content .datacont {
+    order: 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #4C4948;
+    width: 100%;
+    line-height: 1.6;
+    border-radius: 12px;
+    margin-bottom: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+}
+
+#bber p {
+    margin: 0px;
+}
+
+/* ===== 分隔线 ===== */
+#bber .timeline ul li.bber-item hr {
+    display: flex;
+    position: relative;
+    margin: 8px 0px;
+    border: 1px dashed rgba(73,177,245,0.25);
+    width: 100%;
+}
+
+/* ===== 底部信息栏 ===== */
+#bber .bber-bottom {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+}
+
+#bber .bber-info {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+/* 时间标签 */
+#bber .bber-info-time,
+#bber .bber-info-from {
+    color: #666;
+    font-size: 0.7rem;
+    background-color: rgba(0,0,0,0.05);
+    padding: 2px 8px;
+    border-radius: 20px;
+    cursor: default;
+    display: flex;
+    align-items: center;
+}
+
+#bber .bber-info .far.fa-clock,
+#bber .bber-info .fas.fa-clock {
+    margin-right: 4px;
+}
+#bber .bber-info-from span,
+#bber .bber-info-from {
+    margin-left: 4px;
+}
+#bber .bber-info-from i {
+    margin-right: 2px;
+    color: #f47466;
+}
+
+/* 链接标签 */
+#bber .bber-content-link {
+    display: flex;
+    margin-left: 0.5rem;
+    font-size: 0.7rem;
+    align-items: center;
+    background-color: rgba(245,108,108,0.13);
+    color: rgb(245,108,108);
+    padding: 2px 8px;
+    border-radius: 20px;
+    text-decoration: none;
+}
+#bber .bber-content-link i {
+    margin-right: 3px;
+}
+#bber .bber-content-link:hover {
+    background-color: #49b1f5;
+    color: #fff;
+}
+
+/* 回复按钮 */
+#bber .bber-bottom .bber-reply {
+    cursor: pointer;
+    color: #999;
+    transition: color 0.3s;
+}
+#bber .bber-bottom .bber-reply:hover {
+    color: #49b1f5;
+}
+
+/* ===== 图片网格 ===== */
+#bber .bber-container-img {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    flex-wrap: wrap;
+    margin-bottom: 0.3rem;
+}
+
+#bber .bber-content-img {
+    height: 100px;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    position: relative;
+    width: calc(100% / 4 - 5px);
+    margin-bottom: 10px;
+}
+
+#bber .bber-content-img img {
+    object-fit: cover;
+    max-height: 100%;
+    width: 100%;
+    border-radius: 12px;
+}
+
+#bber .bber-container-img .bber-content-noimg {
+    width: calc(100% / 4 - 5px);
+}
+
+/* ===== 音乐播放器 ===== */
+#bber .bber-music {
+    width: 100%;
+    height: 90px;
+    margin: 0.5rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e3e8f7;
+    background: #f7f9fe;
+}
+#bber .aplayer {
+    margin: 0;
+}
+#bber .aplayer.aplayer-withlrc .aplayer-pic {
+    height: 82px;
+    width: 82px;
+    margin: 4px;
+    border-radius: 4px;
+}
+.bber-music .aplayer.aplayer-withlrc .aplayer-info {
+    padding: 5px 7px 0;
+}
+#bber .aplayer .aplayer-info .aplayer-music {
+    height: 23px;
+}
+#bber .aplayer .aplayer-info .aplayer-music .aplayer-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin: 0;
+    color: #4C4948;
+}
+#bber .aplayer .aplayer-info .aplayer-controller {
+    align-items: center;
+}
+#bber .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap {
+    padding: 0;
+}
+#bber .aplayer .aplayer-info .aplayer-controller .aplayer-time {
+    position: initial;
+}
+#bber .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar {
+    background: #e5e5e5;
+    height: 8px;
+    border-radius: 12px;
+    transition: 0.3s;
+    overflow: hidden;
+}
+#bber .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-loaded {
+    height: 100%;
+    border-radius: 12px;
+}
+#bber .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played {
+    height: 100%;
+    border-radius: 12px;
+}
+#bber .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played .aplayer-thumb {
+    display: none;
+}
+#bber .aplayer .aplayer-lrc p {
+    color: #4C4948;
+}
+
+/* ===== 底部提示 ===== */
+#bber-tips {
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    color: #999;
+}
+
+/* ===== 响应式 ===== */
+@media screen and (max-width: 1300px) {
+    #bber ul.list {
+        column-count: 2;
+    }
+}
+@media screen and (max-width: 768px) {
+    #bber ul.list {
+        column-count: 1;
+    }
+}
+
+/* ===== 暗色模式 ===== */
+[data-theme="dark"] #bber .bber-content .datacont {
+    color: rgba(255,255,255,0.85);
+}
+[data-theme="dark"] #bber .timeline ul li.bber-item {
+    background: #1f1f1f;
+    border-color: rgba(255,255,255,0.1);
+    box-shadow: none;
+}
+[data-theme="dark"] #bber .timeline ul li.bber-item hr {
+    border-color: rgba(255,255,255,0.1);
+}
+[data-theme="dark"] #bber .bber-info-time,
+[data-theme="dark"] #bber .bber-info-from {
+    color: #aaa;
+    background-color: rgba(255,255,255,0.08);
+}
+[data-theme="dark"] #bber .bber-music {
+    background: #1a1a1a;
+    border-color: rgba(255,255,255,0.1);
+}
+[data-theme="dark"] #bber .bber-music .aplayer,
+[data-theme="dark"] #bber .aplayer .aplayer-lrc:before,
+[data-theme="dark"] #bber .aplayer .aplayer-lrc:after {
+    background: #1f1f1f;
+    color: rgba(255,255,255,0.85);
+}
+[data-theme="dark"] #bber .aplayer .aplayer-info .aplayer-music .aplayer-title {
+    color: rgba(255,255,255,0.85);
+}
+[data-theme="dark"] #bber .aplayer .aplayer-lrc p {
+    color: rgba(255,255,255,0.85);
+}
+[data-theme="dark"] #bber .bber-content-link {
+    background-color: rgba(245,108,108,0.2);
+}
